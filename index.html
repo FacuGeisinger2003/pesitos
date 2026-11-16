@@ -1,0 +1,366 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Pe$itos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Pe$itos">
+<meta name="theme-color" content="#FFF7F0"><link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" href="icon-192.png">
+<style>
+
+
+
+
+
+
+:root{
+  --brand:#B3123E; --brand-d:#7C0A29; --brand-l:#E2365F; --blush:#FBE4E9; --blush2:#F7D0D9;
+  --cream:#FFF7F0; --ink:#21121A; --ink2:#6B5560; --line:#EFE1E3; --gold:#F5B940; --gold-d:#C98A12;
+  --green:#178A5E; --green-l:#DDF4EA; --card:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ddd;font-family:'DM Sans',sans-serif;color:var(--ink)}
+.slide{width:1920px;height:1080px;position:relative;overflow:hidden;background:var(--cream);margin:0 auto 40px}
+.h{font-family:'Bricolage Grotesque',sans-serif}
+/* ---------- phone ---------- */
+.phone{width:372px;height:780px;border-radius:56px;background:#1a1014;padding:11px;position:relative;
+  box-shadow:0 40px 80px -30px rgba(124,10,41,.45),0 0 0 2px #3a2a30 inset;flex:none}
+.scr{width:100%;height:100%;border-radius:46px;overflow:hidden;background:var(--cream);position:relative;display:flex;flex-direction:column}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:104px;height:30px;background:#1a1014;border-radius:20px;z-index:20}
+.sb{height:48px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 30px 0;font-weight:700;font-size:14px;position:relative;z-index:5}
+.sb .ic{display:flex;gap:5px;align-items:center}
+.body{flex:1;padding:6px 20px 0;overflow:hidden;position:relative}
+.tabs{height:78px;flex:none;border-top:1px solid var(--line);display:flex;background:#fff;padding-bottom:14px}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11.5px;font-weight:500;color:#9d8a92}
+.tab.on{color:var(--brand);font-weight:700}
+.tab+.tab{border-left:1px solid var(--line)}
+.ico{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.logo{font-family:'Bricolage Grotesque';font-weight:800;color:var(--brand);letter-spacing:-.02em;line-height:.9}
+.logo .d{color:var(--gold-d)}
+.pts{font-family:'Bricolage Grotesque';font-weight:800}
+.card{background:var(--card);border-radius:20px;padding:14px 16px;border:1px solid var(--line)}
+.row{display:flex;align-items:center}
+.sp{flex:1}
+.lbl{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.t1{font-family:'Bricolage Grotesque';font-weight:700;font-size:24px;letter-spacing:-.01em}
+.t2{font-family:'Bricolage Grotesque';font-weight:700;font-size:16px}
+.small{font-size:12.5px;color:var(--ink2)}
+.btn{height:50px;border-radius:16px;background:var(--brand);color:#fff;font-weight:700;font-size:15.5px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.inp{height:50px;border-radius:14px;border:1.5px solid var(--line);background:#fff;display:flex;align-items:center;padding:0 14px;font-size:14.5px;color:var(--ink2);gap:10px}
+.inp b{color:var(--ink);font-weight:500}
+.bar{height:9px;border-radius:9px;background:var(--blush);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--brand)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:30px;font-size:12.5px;font-weight:500;border:1.5px solid var(--line);background:#fff}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex:none}
+.coin{width:18px;height:18px;border-radius:50%;background:var(--gold);border:2px solid var(--gold-d);display:inline-flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:10px;color:#7a4f00;flex:none}
+.plus{color:var(--green);font-family:'Bricolage Grotesque';font-weight:800}
+.step{display:flex;gap:5px}.step i{height:5px;flex:1;border-radius:5px;background:var(--blush2)}.step i.on{background:var(--brand)}
+.star{position:absolute;fill:var(--brand)}
+.tog{width:40px;height:24px;border-radius:24px;background:var(--brand);position:relative;flex:none}.tog:after{content:"";position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+.tog.off{background:#dccbd0}.tog.off:after{right:auto;left:3px}
+.radio{width:20px;height:20px;border-radius:50%;border:2px solid #d6c3c9;flex:none}.radio.on{border:6px solid var(--brand)}
+/* ---------- slide chrome ---------- */
+.kicker{font-size:20px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.stitle{font-family:'Bricolage Grotesque';font-weight:800;font-size:58px;letter-spacing:-.025em;line-height:1}
+.sub{font-size:22px;color:var(--ink2);margin-top:12px;max-width:1100px;line-height:1.35}
+.head{position:absolute;left:96px;top:70px;right:96px}
+.foot{position:absolute;left:96px;right:96px;bottom:34px;display:flex;justify-content:space-between;font-size:16px;color:var(--ink2)}
+.foot .logo{font-size:24px}
+.cap{margin-top:22px;text-align:center;width:372px}
+.cap .n{font-family:'Bricolage Grotesque';font-weight:800;font-size:15px;color:#fff;background:var(--brand);width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
+.cap h4{font-family:'Bricolage Grotesque';font-weight:700;font-size:23px;letter-spacing:-.01em}
+.cap p{font-size:16px;color:var(--ink2);margin-top:5px;line-height:1.35}
+.tag{display:inline-block;margin-top:9px;font-size:13px;font-weight:700;color:var(--brand-d);background:var(--blush);padding:4px 10px;border-radius:20px}
+.arrow{width:70px;flex:none;align-self:center;margin-top:-140px;color:var(--brand)}
+
+html,body{height:100%}
+body{background:var(--cream);display:flex;align-items:center;justify-content:center;gap:90px;overflow:hidden;
+ background-image:radial-gradient(circle at 85% 15%,var(--blush) 0,transparent 40%),radial-gradient(circle at 10% 90%,var(--blush) 0,transparent 35%)}
+.body{overflow-y:auto;scrollbar-width:none}.body::-webkit-scrollbar{display:none}
+[data-go],[data-act],.chip,.opt{cursor:pointer}
+[data-go]:active,[data-act]:active,.btn:active{transform:scale(.97)}
+.btn,.tab,.chip,[data-go]{transition:transform .12s,background .2s}
+#phone{animation:in .25s ease}
+@keyframes in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+.toast{position:absolute;left:16px;right:16px;top:58px;z-index:30;background:var(--ink);color:#fff;border-radius:16px;padding:13px 16px;font-size:14px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);animation:in .3s ease}
+.side{width:420px}
+.side .b{display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 16px;border-radius:14px;background:#fff;border:1.5px solid var(--line);font-weight:700;font-size:15px;cursor:pointer}
+.side .b:hover{border-color:var(--brand);color:var(--brand)}
+.side ol{margin:18px 0 0 20px;color:var(--ink2);font-size:16px;line-height:1.7}
+@media (max-width:900px){.side{display:none}body{gap:0}}
+@media (max-width:600px){
+ body{display:block;background:var(--cream)}
+ #wrap{position:fixed;inset:0}
+ .phone{width:100vw;height:100dvh;border-radius:0;padding:0;box-shadow:none;background:var(--cream)}
+ .scr{border-radius:0;padding-top:env(safe-area-inset-top)}
+ .notch,.sb{display:none}
+ .body{padding-top:14px}
+ .tabs{height:auto;min-height:64px;padding:8px 0 max(10px,env(safe-area-inset-bottom))}
+ .toast{top:calc(env(safe-area-inset-top) + 10px)}
+ #phone{zoom:1!important}
+}
+.qr{margin-top:22px;display:flex;gap:16px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px}
+.qr svg{width:120px;height:120px;flex:none}
+</style></head><body><div class="side">
+ <div style="font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)">Prototipo navegable</div>
+ <div style="margin-top:10px"><span class="logo" style="font-size:84px">PE<span class="d">$</span>ITO<span class="d">$</span></span></div>
+ <div class="h" style="font-weight:600;font-size:24px;margin-top:14px;line-height:1.2">Cada pesito suma.<br>Tus buenos hábitos tienen premio.</div>
+ <ol><li>Entrá y completá la configuración</li><li>Tocá tu saldo para ver el detalle</li><li>Tocá un grupo para ver el ranking</li><li>Canjeá un café en <b>Canjes</b></li></ol>
+ <div class="b" onclick="go('impulse')">⏱&nbsp; Probar “¿Lo compro?”</div>
+ <div class="b" onclick="reset()">↺&nbsp; Reiniciar demo</div>
+ <div class="qr" id="qr"></div>
+ <div style="margin-top:22px;font-size:13px;color:var(--ink2)">Creatividad e Innovación — UM · Grupo 4</div>
+</div><div id="wrap"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script><script>const ST={};
+/* ---------------- icons ---------------- */
+const P={
+home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+gift:'<rect x="3" y="8" width="18" height="5" rx="1"/><path d="M5 13v7h14v-7M12 8v12M12 8S10.5 3.5 8 4.5 9 8 12 8m0 0s1.5-4.5 4-3.5S15 8 12 8"/>',
+user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+bell:'<path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/>',
+back:'<path d="M15 5l-7 7 7 7"/>',
+chev:'<path d="M9 5l7 7-7 7"/>',
+coffee:'<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/>',
+shirt:'<path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z"/>',
+plane:'<path d="M2 16l20-8-4 12-6-4-3 4v-5l9-7-11 6z"/>',
+ticket:'<path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4 2 2 0 0 1 0-4V6H3zM14 6v12"/>',
+mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+sheet:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 3v18"/>',
+apps:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+pen:'<path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/>',
+check:'<path d="M5 12.5 10 17 19 7"/>',
+flame:'<path d="M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-3.5 2-5 1 1.5 1.5 2.5 1.5 2.5S12 7 12 3z"/>',
+trophy:'<path d="M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M8 21h8M9 18h6"/>',
+search:'<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/>',
+link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+piggy:'<path d="M5 11a7 6 0 0 1 12-2h2l1 3-2 1v3l-2 1v3h-3v-2H9v2H6v-3a6 6 0 0 1-1-6zM3 9c0 1.5 1 2 2 2"/><circle cx="15" cy="11" r=".6"/>',
+target:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8"/>',
+bag:'<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
+bolt:'<path d="M13 3 5 13h6l-1 8 8-10h-6z"/>',
+moon:'<path d="M20 14A8 8 0 1 1 10 4a6.5 6.5 0 0 0 10 10z"/>',
+spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>'
+};
+const I=(n,s=22,c='')=>`<svg class="ico" style="width:${s}px;height:${s}px;${c}" viewBox="0 0 24 24">${P[n]}</svg>`;
+const STAR=(x,y,s,rot=0,fill='var(--brand)')=>`<svg class="star" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;transform:rotate(${rot}deg);fill:${fill}" viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5L7 14l-5.3-5 7.2-.9z"/></svg>`;
+const LOGO=(s)=>`<span class="logo" style="font-size:${s}px">PE<span class="d">$</span>ITO<span class="d">$</span></span>`;
+const COIN=(s=18)=>`<span class="coin" style="width:${s}px;height:${s}px;font-size:${s*.55}px">$</span>`;
+
+const sb=(dark)=>`<div class="sb" style="${dark?'color:#fff':''}"><span>9:41</span><span class="ic">
+<svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+<svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor"/><rect x="23.5" y="4" width="1.5" height="4" rx=".7" fill="currentColor" opacity=".5"/></svg></span></div>`;
+const tabs=(on)=>`<div class="tabs">${[['home','Inicio'],['gift','Canjes'],['user','Usuario']].map(([i,t])=>`<div class="tab ${t===on?'on':''}" data-go="${{Inicio:'home',Canjes:'rewards',Usuario:'profile'}[t]}">${I(i,23)}${t}</div>`).join('')}</div>`;
+const phone=(inner,{dark=false,bg='',tab=null}={})=>`<div class="phone"><div class="scr" style="${bg}"><div class="notch"></div>${sb(dark)}${inner}${tab?tabs(tab):''}${ST.toast?`<div class="toast">${ST.toast}</div>`:''}</div></div>`;
+
+/* ---------------- screens ---------------- */
+const S={};
+S.login=()=>phone(`<div class="body" style="display:flex;flex-direction:column;padding:0 26px">
+ ${STAR(250,20,54,12)}${STAR(296,66,30,-10,'var(--gold)')}
+ <div style="margin-top:118px">${LOGO(66)}</div>
+ <div style="font-size:16px;color:var(--ink2);margin-top:12px">Cada pesito suma.<br>Tus buenos hábitos tienen premio.</div>
+ <div style="margin-top:44px;display:flex;flex-direction:column;gap:12px">
+  <div class="lbl" style="margin-bottom:-6px">Usuario</div><div class="inp">${I('mail',18)}<b>sofi.rodriguez@gmail.com</b></div>
+  <div class="lbl" style="margin-bottom:-6px;margin-top:4px">Contraseña</div><div class="inp">${I('lock',18)}<b style="letter-spacing:3px">••••••••</b></div>
+  <div class="btn" data-go="ob1" style="margin-top:10px">Entrar</div>
+  <div class="row small" style="gap:10px;margin:4px 0"><i style="flex:1;height:1px;background:var(--line)"></i>o<i style="flex:1;height:1px;background:var(--line)"></i></div>
+  <div class="btn ghost" data-go="ob1"><span style="width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">G</span>Continuar con Google</div>
+ </div>
+ <div class="small" style="text-align:center;margin-top:auto;margin-bottom:34px">¿No tenés cuenta? <b data-go="ob1" style="color:var(--brand)">Registrate</b></div>
+</div>`);
+
+const obHead=(n,t,s)=>`<div class="row" style="gap:12px;margin-top:4px"><span data-go="${['login','ob1','ob2'][n-1]}" style="display:flex">${I('back',22)}</span><div class="step" style="flex:1">${[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div><span class="small" style="font-weight:700">${n}/3</span></div>
+<div class="t1" style="margin-top:20px;font-size:27px">${t}</div><div class="small" style="font-size:14px;margin-top:6px;line-height:1.4">${s}</div>`;
+
+S.ob1=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
+ ${obHead(1,'Contanos de vos','Con esto armamos metas a tu medida, no genéricas.')}
+ <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
+  <div class="card"><div class="lbl">Presupuesto del mes</div><div class="row" style="margin-top:6px"><span class="pts" style="font-size:30px">$ 18.000</span><span class="sp"></span><span class="small">UYU</span></div></div>
+  <div class="card"><div class="row"><div class="lbl">Ahorro objetivo</div><span class="sp"></span><span class="pts" style="font-size:22px;color:var(--brand)">15%</span></div>
+   <div style="position:relative;margin-top:14px"><div class="bar"><i style="width:30%"></i></div><span style="position:absolute;left:30%;top:-6px;width:21px;height:21px;margin-left:-10px;border-radius:50%;background:#fff;border:3px solid var(--brand)"></span></div>
+   <div class="row small" style="margin-top:8px"><span>0%</span><span class="sp"></span><span>= $ 3.600 por mes</span><span class="sp"></span><span>50%</span></div></div>
+  <div class="card"><div class="row"><div class="lbl">Ingresos</div><span class="sp"></span><span class="small">si tenés</span></div><div class="row" style="margin-top:6px"><span class="pts" style="font-size:24px">$ 24.000</span><span class="sp"></span><span class="small">sueldo part-time</span></div></div>
+  <div><div class="lbl" style="margin:4px 0 8px">Tu perfil</div><div style="display:flex;flex-wrap:wrap;gap:7px">
+   <span class="chip on">${I('check',14)}Estudio</span><span class="chip on">${I('check',14)}Trabajo</span><span class="chip">Emprendo</span><span class="chip on">21 años</span><span class="chip">Vivo solo/a</span></div></div>
+ </div>
+ <div class="btn" data-go="ob2" style="margin:auto 0 30px">Siguiente</div>
+</div>`);
+
+const opt=(ic,t,s,on)=>`<div class="card row" style="gap:12px;padding:12px 14px;${on?'border:2px solid var(--brand);background:#FFF9FA':''}"><span style="width:40px;height:40px;border-radius:12px;background:${on?'var(--brand)':'var(--blush)'};color:${on?'#fff':'var(--brand)'};display:flex;align-items:center;justify-content:center;flex:none">${I(ic,20)}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${t}</div><div class="small" style="font-size:12px;margin-top:2px">${s}</div></div><span class="radio ${on?'on':''}"></span></div>`;
+S.ob2=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
+ ${obHead(2,'¿Cómo registrás tus gastos?','Automático con tu mail o a mano en la app. Elegí lo que te quede más cómodo.')}
+ <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
+  ${opt('mail','Conectar mi mail','Leemos los avisos de compra de Itaú y registramos cada gasto solo',true)}
+  ${opt('pen','Registrar acá en Pesitos','Anotás cada gasto en 2 toques, con categorías',false)}
+  <div class="row" style="gap:10px;padding:10px 12px;border-radius:14px;background:var(--green-l);font-size:12.5px;color:#0f5c3f">${I('lock',17)}<span>Solo leemos los avisos de compra. Nada más de tu mail.</span></div>
+ </div>
+ <div class="lbl" style="margin:18px 0 8px">Informes</div>
+ <div style="display:flex;gap:7px"><span class="chip">Semanal</span><span class="chip on">Mensual</span><span class="chip">No, gracias</span></div>
+ <div class="row" style="margin-top:12px;font-size:14px;gap:10px">${I('chart',19,'color:var(--brand)')}Incluir gráficas<span class="sp"></span><span class="tog"></span></div>
+ <div class="btn" data-go="ob3" style="margin:auto 0 30px">Siguiente</div>
+</div>`);
+
+const friend=(c,ini,n,s,b)=>`<div class="row" style="gap:12px;padding:9px 0"><span class="av" style="background:${c}">${ini}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${n}</div><div class="small" style="font-size:12px">${s}</div></div>${b?`<span class="chip on" style="height:32px">Seguir</span>`:`<span class="chip" style="height:32px">Siguiendo</span>`}</div>`;
+S.ob3=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
+ ${obHead(3,'Sumá a tus amigos','Ahorrar en grupo es más fácil (y más divertido).')}
+ <div class="inp" style="margin-top:16px;height:44px">${I('search',18)}Buscar por nombre o mail</div>
+ <div style="margin-top:6px">
+  ${friend('#E2365F','JM','Juli Martínez','12 amigos en común',false)}
+  ${friend('#7C0A29','MP','Mati Pereira','Te invitó a "Viaje a Floripa"',true)}
+  ${friend('#C98A12','CS','Caro Silva','8 amigos en común',true)}
+ </div>
+ <div class="card" style="margin-top:8px;background:var(--blush);border-color:var(--blush2)">
+  <div class="row" style="gap:10px"><span style="width:38px;height:38px;border-radius:12px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center">${I('plus',20)}</span><div><div class="t2">Crear un grupo</div><div class="small" style="font-size:12px">Con un objetivo en común o para competir</div></div></div>
+  <div class="row" style="gap:8px;margin-top:12px"><div class="inp" style="flex:1;height:40px;font-size:12.5px;background:#fff">${I('link',16)}<b>pesitos.app/g/floripa</b></div><span class="chip" style="height:40px">${I('copy',15)}</span><span class="chip" style="height:40px">${I('mail',15)}</span></div>
+ </div>
+ <div class="btn" data-go="home" style="margin:auto 0 30px">Empezar a sumar</div>
+</div>`);
+
+const grp=(c,ini,n,pos,of,up)=>`<div data-go="group" class="row" style="gap:12px;padding:9px 0;border-top:1px solid var(--line)"><span class="av" style="background:${c};border-radius:12px">${ini}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${n}</div><div class="small" style="font-size:12px">${of} integrantes</div></div><div style="text-align:right"><div class="pts" style="font-size:20px;color:var(--brand)">${pos}º</div><div style="font-size:11px;font-weight:700;color:${up?'var(--green)':'var(--ink2)'}">${up?'▲ subiste':'= igual'}</div></div></div>`;
+const BAL=(n=ST.pts,label='Tenés',hint=true)=>`<div ${hint?'data-go="detail"':''} style="border-radius:24px;padding:18px 20px 16px;background:linear-gradient(135deg,var(--brand) 0%,var(--brand-d) 100%);color:#fff;position:relative;overflow:hidden">
+ ${STAR(262,-10,70,15,'rgba(255,255,255,.12)')}${STAR(278,22,22,-8,'var(--gold)')}
+ <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85">${label}</div>
+ <div class="row" style="gap:10px;margin-top:4px"><span class="pts" style="font-size:58px;line-height:1">${n}</span><span class="logo" style="color:#fff;font-size:22px;margin-top:14px">PE<span style="color:var(--gold)">$</span>ITO<span style="color:var(--gold)">$</span></span></div>
+ ${hint?`<div class="row" style="margin-top:10px;font-size:13px"><span style="background:rgba(255,255,255,.18);padding:4px 10px;border-radius:20px;font-weight:700">+${ST.week} esta semana</span><span class="sp"></span><span style="font-weight:700">Ver detalle</span>${I('chev',16)}</div>`:''}
+</div>`;
+S.home=()=>phone(`<div class="body">
+ <div class="row" style="margin:2px 0 14px"><div><div class="small">Viernes 6 de noviembre</div><div class="t1">Hola, Sofi</div></div><span class="sp"></span><span style="position:relative">${I('bell',24)}<i style="position:absolute;right:1px;top:1px;width:8px;height:8px;border-radius:50%;background:var(--brand-l)"></i></span></div>
+ ${BAL()}
+ <div class="card" style="margin-top:12px"><div class="row"><span class="lbl">Presupuesto de noviembre</span><span class="sp"></span><span style="font-weight:700;font-size:13px;color:var(--green)">Vas bien</span></div>
+  <div class="row" style="margin:6px 0 8px;font-size:14px"><b class="pts" style="font-size:19px">$ 6.200</b>&nbsp;gastados de $ 18.000</div><div class="bar"><i style="width:34%"></i></div>
+  <div class="small" style="margin-top:7px;font-size:12px">Te quedan $ 11.800 para 24 días · ≈ $ 490 por día</div></div>
+ <div class="row" style="gap:8px;margin-top:10px">
+  <div class="card" style="flex:1;padding:11px 12px"><div class="row" style="gap:6px;color:var(--brand)">${I('flame',18)}<b class="pts" style="font-size:19px;color:var(--ink)">12 días</b></div><div class="small" style="font-size:11.5px">de racha registrando</div></div>
+  <div class="card" style="flex:1;padding:11px 12px"><div class="row" style="gap:6px;color:var(--brand)">${I('target',18)}<b class="pts" style="font-size:19px;color:var(--ink)">+40</b></div><div class="small" style="font-size:11.5px">Sin delivery hasta el viernes</div></div>
+ </div>
+ <div class="row" style="margin:10px 0 0"><span class="t2">Grupos</span><span class="sp"></span><span class="small" style="font-weight:700;color:var(--brand)">Ver todos</span></div>
+ ${grp('#7C0A29','VF','Viaje a Floripa',2,5,true)}${grp('#E2365F','LL','Los del liceo',1,8,false)}
+ <div data-go="impulse" style="margin-top:6px;margin-bottom:10px;height:42px;border-radius:16px;background:var(--ink);color:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font-weight:700;font-size:14.5px">${I('clock',19,'color:var(--gold)')}¿Lo compro?<span style="font-weight:500;font-size:12.5px;opacity:.7">Pensalo 24 h antes</span><span class="sp"></span>${I('chev',16)}</div>
+</div>`,{tab:'Inicio'});
+
+const li=(n,t,s,ic)=>`<div class="row" style="gap:12px;padding:11px 0;border-top:1px solid var(--line)"><span style="width:38px;height:38px;border-radius:12px;background:var(--green-l);color:var(--green);display:flex;align-items:center;justify-content:center;flex:none">${I(ic,19)}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px;line-height:1.2">${t}</div><div class="small" style="font-size:12px;margin-top:2px">${s}</div></div><span class="plus" style="font-size:20px">+${n}</span></div>`;
+S.detail=()=>phone(`<div class="body">
+ <div class="row" style="gap:10px;margin:4px 0 14px"><span data-go="home" style="display:flex">${I('back',22)}</span><span class="t2" style="font-size:18px">Tus pe$itos</span></div>
+ ${BAL(200,'Total de noviembre',false)}
+ <div class="lbl" style="margin:16px 0 4px">Cómo los ganaste</div>
+ ${li(20,'Ahorro del mes pasado','Guardaste $ 3.900 en octubre','piggy')}
+ ${li(50,'Cumpliste el presupuesto','Octubre cerró en $ 17.300 de $ 18.000','target')}
+ ${li(30,'Registro de gastos','30 días sin saltearte uno','pen')}
+ ${li(50,'Evitaste una compra impulsiva','Usaste ¿Lo compro? y esperaste 24 h','clock')}
+ ${ST.waited?li(50,'Pausa de impulso de hoy','No compraste la campera de jean','clock'):''}${li(50,'Ahorraste el 15% del sueldo','Meta de ahorro cumplida','trophy')}
+ <div class="card row" style="gap:10px;margin-top:8px;background:var(--blush);border:none;padding:11px 14px">${I('bolt',19,'color:var(--brand)')}<div class="small" style="font-size:12.5px;color:var(--ink)"><b>Te faltan 40</b> para el 2x1 en el cine</div></div>
+</div>`,{tab:'Inicio'});
+
+S.impulse=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
+ <div class="row" style="gap:10px;margin:4px 0 12px"><span data-go="home" style="display:flex">${I('back',22)}</span><span class="lbl" style="color:var(--brand)">Pausa de 24 h</span></div>
+ <div class="t1" style="font-size:30px">¿Lo compro?</div>
+ <div class="small" style="font-size:13.5px;margin-top:4px;line-height:1.4">Antes de comprar algo que no tenías planeado, anotalo acá.</div>
+ <div class="lbl" style="margin:16px 0 6px">¿Qué querés comprar?</div>
+ <div class="inp" style="height:46px">${I('bag',18)}<b>Campera de jean</b></div>
+ <div class="row" style="gap:8px;margin-top:8px"><div class="inp" style="height:46px;width:120px"><b class="pts" style="font-size:17px">$ 2.400</b></div>
+  <div style="display:flex;gap:6px;flex:1"><span class="chip on">Ropa</span><span class="chip">Salidas</span><span class="chip">Otro</span></div></div>
+ <div class="card" style="margin-top:12px;background:var(--blush);border:none;padding:13px 15px">
+  <div class="row" style="gap:10px;font-size:13.5px">${I('chart',18,'color:var(--brand)')}<span>Sería tu <b>3er gasto en Ropa</b> este mes</span></div>
+  <div class="row" style="gap:10px;font-size:13.5px;margin-top:9px">${I('piggy',18,'color:var(--brand)')}<span>Llegarías al <b>48%</b> del presupuesto</span></div>
+  <div class="bar" style="margin-top:9px;background:#fff"><i style="width:34%"></i></div>
+ </div>
+ <div class="row" style="gap:10px;margin-top:12px;font-size:13px;color:var(--ink2)">${I('clock',18,'color:var(--brand)')}<span>Te avisamos <b style="color:var(--ink)">mañana a las 21:47</b> para ver si todavía la querés.</span></div>
+ <div class="lbl" style="margin:16px 0 6px">En pausa</div>
+ <div class="card row" style="gap:12px;padding:10px 14px">${I('bag',18,'color:var(--ink2)')}<div style="flex:1;font-size:13.5px"><b>Auriculares</b> · $ 1.900</div><span style="font-size:12px;font-weight:700;color:var(--gold-d)">quedan 6 h</span></div>
+ <div style="margin-top:auto;margin-bottom:22px">
+  <div class="btn" data-act="wait">Esperar 24 h · ganá <span class="pts">+50</span>${COIN(18)}</div>
+  <div data-act="buy" style="text-align:center;margin-top:12px;font-weight:700;font-size:14px;color:var(--ink2)">Lo necesito, comprar igual</div>
+ </div>
+</div>`);
+const cat=(ic,t,_o,on=ST.cat===t)=>`<div data-act="cat" data-cat="${t}" style="flex:1;text-align:center"><div style="height:66px;border-radius:18px;background:${on?'var(--brand)':'#fff'};color:${on?'#fff':'var(--brand)'};border:1.5px solid ${on?'var(--brand)':'var(--line)'};display:flex;align-items:center;justify-content:center">${I(ic,28)}</div><div style="font-size:12px;font-weight:700;margin-top:6px">${t}</div></div>`;
+const rew=(ic,t,s,p,_o,_p,ok=p<=ST.pts,pct=Math.min(100,Math.round(ST.pts/p*100)))=>`<div ${ok?`data-act="redeem" data-cost="${p}" data-name="${t}" data-place="${s}"`:''} class="row" style="gap:12px;padding:11px 0;border-top:1px solid var(--line)"><span style="width:46px;height:46px;border-radius:14px;background:var(--blush);color:var(--brand);display:flex;align-items:center;justify-content:center;flex:none">${I(ic,22)}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${t}</div><div class="small" style="font-size:12px">${s}</div>${ok?'':`<div class="bar" style="height:5px;margin-top:6px;width:120px"><i style="width:${pct}%;background:var(--gold)"></i></div>`}</div><div style="text-align:right"><div class="row" style="gap:4px;justify-content:flex-end"><b class="pts" style="font-size:17px">${p}</b>${COIN(15)}</div><div style="font-size:11px;font-weight:700;color:${ok?'var(--green)':'var(--gold-d)'}">${ok?'Te alcanza':'Te faltan '+(p-ST.pts)}</div></div></div>`;
+S.rewards=()=>phone(`<div class="body">
+ <div class="row" style="margin:4px 0 14px"><span class="t1">Canjes</span><span class="sp"></span><span class="chip" style="height:34px;gap:6px;border-color:var(--gold);background:#FFF6E0">${COIN(17)}<b class="pts" style="font-size:16px">${ST.pts}</b></span></div>
+ <div style="display:flex;gap:9px">${cat('coffee','Comida',true)}${cat('shirt','Moda')}${cat('plane','Viajes')}${cat('ticket','Experiencias')}</div>
+ <div style="margin-top:16px;border-radius:22px;background:var(--ink);color:#fff;padding:16px 18px;position:relative;overflow:hidden">
+  ${STAR(250,-14,80,10,'rgba(255,255,255,.08)')}
+  <div class="lbl" style="color:var(--gold)">Destacado de la semana</div>
+  <div class="row" style="gap:14px;margin-top:10px"><span style="width:58px;height:58px;border-radius:18px;background:var(--gold);color:#5a3a00;display:flex;align-items:center;justify-content:center;flex:none">${I('coffee',30)}</span><div style="flex:1"><div class="t2" style="font-size:18px">Café + medialuna</div><div style="font-size:12.5px;opacity:.75">Café Amapola · Pocitos</div></div></div>
+  <div class="row" style="margin-top:14px"><div class="row" style="gap:6px"><b class="pts" style="font-size:24px">60</b>${COIN(18)}</div><span class="sp"></span><span data-act="redeem" data-cost="60" data-name="Café + medialuna" data-place="Café Amapola" style="background:#fff;color:var(--ink);font-weight:700;font-size:14px;padding:9px 18px;border-radius:14px">Canjear</span></div>
+ </div>
+ <div class="lbl" style="margin:16px 0 2px">Cerca tuyo</div>
+ ${rew('coffee','Desayuno para dos','La Panadería del Barrio',140,true)}
+ ${rew('ticket','2x1 en el cine','Cualquier función',240,false,83)}
+ ${rew('spark','Clase de surf','Experiencias · La Barra',400,false,50)}
+</div>`,{tab:'Canjes'});
+
+function qr(){let s=7,o='';const r=()=>{s=(s*9301+49297)%233280;return s/233280};const n=21,c=8;
+ const fin=(x,y)=>(x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13);
+ for(let y=0;y<n;y++)for(let x=0;x<n;x++){let on;
+  if(fin(x,y)){const fx=x>13?x-14:x,fy=y>13?y-14:y;on=(fx==0||fx==6||fy==0||fy==6)||(fx>1&&fx<5&&fy>1&&fy<5)}else on=r()>.52;
+  if(on)o+=`<rect x="${x*c}" y="${y*c}" width="${c}" height="${c}"/>`}
+ return `<svg width="168" height="168" viewBox="0 0 168 168" fill="var(--ink)">${o}</svg>`}
+S.redeem=()=>phone(`<div class="body" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+ ${STAR(30,30,30,-12,'var(--gold)')}${STAR(290,70,40,14)}${STAR(270,20,18,0,'var(--brand-l)')}
+ <div style="margin-top:42px;width:70px;height:70px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center">${I('check',38,'stroke-width:2.6')}</div>
+ <div class="t1" style="margin-top:16px;font-size:28px">¡Te lo ganaste!</div>
+ <div style="font-size:15px;color:var(--ink2);margin-top:6px">Canjeaste <b style="color:var(--ink)">${ST.last.name}</b><br>en ${ST.last.place}</div>
+ <div class="card" style="margin-top:22px;padding:18px;border-radius:24px;box-shadow:0 14px 30px -18px rgba(124,10,41,.35)">${qr()}
+  <div class="pts" style="font-size:22px;letter-spacing:.12em;margin-top:10px">PES-4821</div><div class="small" style="font-size:12px">Mostralo en caja · vence el 13/11</div></div>
+ <div class="row" style="gap:8px;margin-top:18px;font-size:14px"><span>Te quedan</span><b class="pts" style="font-size:18px">${ST.pts}</b>${COIN(16)}</div>
+ <div style="width:100%;margin-top:auto;margin-bottom:30px;display:flex;flex-direction:column;gap:10px"><div class="btn" data-act="share">Compartir con el grupo</div><div data-go="rewards" style="font-weight:700;font-size:14px;color:var(--ink2);padding:6px">Volver a canjes</div></div>
+</div>`);
+
+const rk=(p,c,ini,n,pts,me)=>`<div class="row" style="gap:12px;padding:9px 12px;border-radius:14px;${me?'background:var(--blush);':''}"><b class="pts" style="width:18px;font-size:17px;color:${p==1?'var(--gold-d)':'var(--ink2)'}">${p}</b><span class="av" style="background:${c};width:34px;height:34px;font-size:13px">${ini}</span><div style="flex:1;font-weight:700;font-size:14.5px">${n}${me?' <span class="small" style="font-weight:500">(vos)</span>':''}</div><b class="pts" style="font-size:16px">${pts}</b>${COIN(14)}</div>`;
+S.group=()=>phone(`<div class="body">
+ <div class="row" style="gap:10px;margin:4px 0 14px"><span data-go="home" style="display:flex">${I('back',22)}</span><span class="t2" style="font-size:18px">Viaje a Floripa</span><span class="sp"></span><span class="chip" style="height:32px">${I('link',15)}Invitar</span></div>
+ <div class="card" style="background:var(--ink);color:#fff;border:none;padding:16px 18px">
+  <div class="lbl" style="color:var(--gold)">Objetivo en común</div>
+  <div class="row" style="margin-top:6px"><b class="pts" style="font-size:28px">$ 24.800</b><span style="opacity:.7;font-size:13px;margin:8px 0 0 6px">de $ 40.000</span></div>
+  <div class="bar" style="margin-top:10px;background:rgba(255,255,255,.15)"><i style="width:62%;background:var(--gold)"></i></div>
+  <div class="row" style="margin-top:8px;font-size:12px;opacity:.8"><span>62% · faltan 54 días</span><span class="sp"></span><span>Enero 2027</span></div>
+ </div>
+ <div class="row" style="margin:16px 0 6px"><span class="t2">Ranking del mes</span><span class="sp"></span><span class="small">noviembre</span></div>
+ ${rk(1,'#7C0A29','MP','Mati',340)}${rk(2,'#B3123E','SR','Sofi',200+ST.extra,true)}${rk(3,'#C98A12','CS','Caro',180)}${rk(4,'#E2365F','JM','Juli',150)}${rk(5,'#6B5560','NB','Nico',90)}
+ <div class="card row" style="gap:10px;margin-top:10px;padding:11px 14px">${I('trophy',19,'color:var(--gold-d)')}<div class="small" style="font-size:12.5px;color:var(--ink)">El 1º del mes gana <b>+30 pe$itos</b> extra</div></div>
+</div>`,{tab:'Inicio'});
+
+const badge=(ic,t,c,off)=>`<div style="flex:1;text-align:center;opacity:${off?.35:1}"><div style="width:54px;height:54px;margin:0 auto;border-radius:50%;background:${c};color:#fff;display:flex;align-items:center;justify-content:center">${I(ic,25)}</div><div style="font-size:11px;font-weight:700;margin-top:6px;line-height:1.2">${t}</div></div>`;
+const cfg=(ic,t,v)=>`<div class="row" style="gap:12px;padding:11px 0;border-top:1px solid var(--line)">${I(ic,19,'color:var(--brand)')}<span style="font-size:14px;flex:1">${t}</span><span class="small" style="font-size:12.5px">${v}</span>${I('chev',15,'color:#bba')}</div>`;
+S.profile=()=>phone(`<div class="body">
+ <div class="row" style="gap:14px;margin:6px 0 16px"><span class="av" style="width:62px;height:62px;font-size:22px;background:var(--brand)">SR</span><div><div class="t1" style="font-size:22px">Sofi Rodríguez</div><div class="small">21 años · Estudia y trabaja</div></div></div>
+ <div class="row" style="gap:8px">
+  ${[[(1240+ST.extra).toLocaleString('es-UY'),'ganados en total'],['12','días de racha'],[String(8+ST.canjes),'canjes']].map(([a,b])=>`<div class="card" style="flex:1;padding:10px 10px;text-align:center"><div class="pts" style="font-size:21px">${a}</div><div class="small" style="font-size:11px">${b}</div></div>`).join('')}
+ </div>
+ <div class="lbl" style="margin:16px 0 10px">Logros</div>
+ <div style="display:flex;gap:4px">${badge('flame','Racha de 7','var(--brand)')}${badge('target','Presupuesto','var(--green)')}${badge('clock','Anti-impulso','var(--gold-d)')}${badge('trophy','1º del grupo','#7C0A29',true)}</div>
+ <div class="card row" style="gap:12px;margin-top:16px;background:var(--blush);border:none">${I('chart',22,'color:var(--brand)')}<div style="flex:1"><div style="font-weight:700;font-size:14px">Tu informe de octubre</div><div class="small" style="font-size:12px">Ahorraste 16% · 4 micro-gastos menos</div></div>${I('chev',16)}</div>
+ <div style="margin-top:8px">${cfg('target','Mis metas','15% · $ 18.000')}${cfg('mail','Registro de gastos','Mail Itaú ✓')}${cfg('bell','Informes','Mensual')}${cfg('user','Amigos y grupos','14 · 3 grupos')}</div>
+</div>`,{tab:'Usuario'});
+
+
+function reset(){Object.assign(ST,{screen:'login',pts:200,week:50,waited:false,extra:0,canjes:0,cat:'Comida',last:{name:'Café + medialuna',place:'Café Amapola'},toast:''});render()}
+let tt;function toast(m){ST.toast=m;render();clearTimeout(tt);tt=setTimeout(()=>{ST.toast='';render(false)},2600)}
+function go(s){ST.screen=s;render()}
+function render(anim=true){const w=document.getElementById('wrap');w.innerHTML=S[ST.screen]();const p=w.firstElementChild;p.id='phone';if(!anim)p.style.animation='none';fit()}
+function fit(){const p=document.getElementById('phone');if(innerWidth<=600)return;if(p)p.style.zoom=Math.min(1,(innerHeight-32)/780,(innerWidth-16)/372)}
+addEventListener('resize',fit);
+document.addEventListener('click',e=>{
+ const a=e.target.closest('[data-act]'),g=e.target.closest('[data-go]');
+ if(a){const t=a.dataset.act;
+  if(t==='wait'){if(!ST.waited){ST.waited=true;ST.pts+=50;ST.week+=50;ST.extra+=50}ST.screen='home';toast('Demo: pasaron 24 h y no la compraste. +50 pe$itos');}
+  else if(t==='buy'){ST.screen='home';toast('Compra registrada en Ropa · $ 2.400');}
+  else if(t==='cat'){ST.cat=a.dataset.cat;render(false)}
+  else if(t==='redeem'){const c=+a.dataset.cost;if(ST.pts<c)return;ST.pts-=c;ST.canjes++;ST.last={name:a.dataset.name,place:a.dataset.place};go('redeem')}
+  else if(t==='share'){ST.screen='group';toast('Compartiste tu canje en “Viaje a Floripa”');}
+  return}
+ if(g){go(g.dataset.go);return}
+ const ch=e.target.closest('.chip');if(ch&&!ch.closest('[data-act]')){const grp=ch.parentElement;if(['Semanal','Mensual','No, gracias'].includes(ch.textContent.trim()))grp.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));ch.classList.toggle('on');return}
+ const tg=e.target.closest('.tog');if(tg){tg.classList.toggle('off');return}
+ const op=e.target.closest('.card');if(op&&op.querySelector('.radio')){op.parentElement.querySelectorAll('.card').forEach(c=>{c.style.border='';c.style.background='';c.querySelector('.radio').classList.remove('on');const s=c.querySelector('span');s.style.background='var(--blush)';s.style.color='var(--brand)'});op.style.border='2px solid var(--brand)';op.style.background='#FFF9FA';op.querySelector('.radio').classList.add('on');const s=op.querySelector('span');s.style.background='var(--brand)';s.style.color='#fff'}
+});
+reset();
+(function(){const el=document.getElementById('qr');const h=location.hostname;
+ if(!h||h==='localhost'||h==='127.0.0.1'){el.innerHTML='<div style="font-size:14px;color:var(--ink2);line-height:1.45"><b style="color:var(--ink)">Para abrirla en el celular</b><br>Abrí <b>Abrir Pesitos.command</b> y escaneá el QR que aparece acá.</div>';return}
+ if(typeof qrcode==='undefined')return;const q=qrcode(0,'M');q.addData(location.href);q.make();
+ el.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true})+'<div style="font-size:14px;color:var(--ink2);line-height:1.45"><b style="color:var(--ink)">Escaneá con tu celular</b><br>y abrila como app: Compartir → <b>Agregar a inicio</b>.<br><span style="font-size:12px">'+location.host+'</span></div>'})();
+</script></body></html>
