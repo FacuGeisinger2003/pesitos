@@ -6,34 +6,30 @@
 <meta name="theme-color" content="#FFF7F0"><link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png"><link rel="icon" href="icon-192.png">
 <style>
-
-
-
-
-
-
 :root{
   --brand:#B3123E; --brand-d:#7C0A29; --brand-l:#E2365F; --blush:#FBE4E9; --blush2:#F7D0D9;
   --cream:#FFF7F0; --ink:#21121A; --ink2:#6B5560; --line:#EFE1E3; --gold:#F5B940; --gold-d:#C98A12;
-  --green:#178A5E; --green-l:#DDF4EA; --card:#FFFFFF;
+  --green:#178A5E; --green-l:#DDF4EA; --card:#FFFFFF; --red:#C62828;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#ddd;font-family:'DM Sans',sans-serif;color:var(--ink)}
-.slide{width:1920px;height:1080px;position:relative;overflow:hidden;background:var(--cream);margin:0 auto 40px}
+html,body{height:100%}
+body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream);display:flex;align-items:center;justify-content:center;gap:80px;overflow:hidden;
+ background-image:radial-gradient(circle at 85% 15%,var(--blush) 0,transparent 40%),radial-gradient(circle at 10% 90%,var(--blush) 0,transparent 35%)}
 .h{font-family:'Bricolage Grotesque',sans-serif}
-/* ---------- phone ---------- */
+/* phone */
 .phone{width:372px;height:780px;border-radius:56px;background:#1a1014;padding:11px;position:relative;
   box-shadow:0 40px 80px -30px rgba(124,10,41,.45),0 0 0 2px #3a2a30 inset;flex:none}
 .scr{width:100%;height:100%;border-radius:46px;overflow:hidden;background:var(--cream);position:relative;display:flex;flex-direction:column}
 .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:104px;height:30px;background:#1a1014;border-radius:20px;z-index:20}
 .sb{height:48px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:6px 30px 0;font-weight:700;font-size:14px;position:relative;z-index:5}
 .sb .ic{display:flex;gap:5px;align-items:center}
-.body{flex:1;padding:6px 20px 0;overflow:hidden;position:relative}
-.tabs{height:78px;flex:none;border-top:1px solid var(--line);display:flex;background:#fff;padding-bottom:14px}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11.5px;font-weight:500;color:#9d8a92}
+.body{flex:1;padding:6px 20px 16px;overflow-y:auto;position:relative;scrollbar-width:none}.body::-webkit-scrollbar{display:none}
+.tabs{height:78px;flex:none;border-top:1px solid var(--line);display:flex;background:#fff;padding-bottom:14px;position:relative}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;font-weight:500;color:#9d8a92}
 .tab.on{color:var(--brand);font-weight:700}
-.tab+.tab{border-left:1px solid var(--line)}
-.ico{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.tab.mid{flex:none;width:64px}
+.tab.mid span{width:52px;height:52px;border-radius:18px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;margin-top:-26px;box-shadow:0 10px 20px -8px rgba(124,10,41,.6)}
+.ico{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .logo{font-family:'Bricolage Grotesque';font-weight:800;color:var(--brand);letter-spacing:-.02em;line-height:.9}
 .logo .d{color:var(--gold-d)}
 .pts{font-family:'Bricolage Grotesque';font-weight:800}
@@ -44,51 +40,77 @@ body{background:#ddd;font-family:'DM Sans',sans-serif;color:var(--ink)}
 .t1{font-family:'Bricolage Grotesque';font-weight:700;font-size:24px;letter-spacing:-.01em}
 .t2{font-family:'Bricolage Grotesque';font-weight:700;font-size:16px}
 .small{font-size:12.5px;color:var(--ink2)}
-.btn{height:50px;border-radius:16px;background:var(--brand);color:#fff;font-weight:700;font-size:15.5px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn{height:50px;border-radius:16px;background:var(--brand);color:#fff;font-weight:700;font-size:15.5px;display:flex;align-items:center;justify-content:center;gap:8px;border:0;width:100%;font-family:inherit}
 .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn.dark{background:var(--ink)}
+.btn[disabled]{opacity:.45;pointer-events:none}
 .inp{height:50px;border-radius:14px;border:1.5px solid var(--line);background:#fff;display:flex;align-items:center;padding:0 14px;font-size:14.5px;color:var(--ink2);gap:10px}
-.inp b{color:var(--ink);font-weight:500}
+.inp:focus-within{border-color:var(--brand)}
+.inp input{border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:var(--ink);flex:1;min-width:0;font-weight:500}
+.inp input::placeholder{color:#b9a7ae;font-weight:400}
+.big input{font-family:'Bricolage Grotesque';font-weight:800;font-size:34px}
 .bar{height:9px;border-radius:9px;background:var(--blush);overflow:hidden}
-.bar i{display:block;height:100%;border-radius:9px;background:var(--brand)}
-.chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:30px;font-size:12.5px;font-weight:500;border:1.5px solid var(--line);background:#fff}
+.bar i{display:block;height:100%;border-radius:9px;background:var(--brand);transition:width .4s}
+.chip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:30px;font-size:12.5px;font-weight:500;border:1.5px solid var(--line);background:#fff;white-space:nowrap}
 .chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
 .av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex:none}
 .coin{width:18px;height:18px;border-radius:50%;background:var(--gold);border:2px solid var(--gold-d);display:inline-flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:10px;color:#7a4f00;flex:none}
 .plus{color:var(--green);font-family:'Bricolage Grotesque';font-weight:800}
+.minus{color:var(--brand);font-family:'Bricolage Grotesque';font-weight:800}
 .step{display:flex;gap:5px}.step i{height:5px;flex:1;border-radius:5px;background:var(--blush2)}.step i.on{background:var(--brand)}
-.star{position:absolute;fill:var(--brand)}
-.tog{width:40px;height:24px;border-radius:24px;background:var(--brand);position:relative;flex:none}.tog:after{content:"";position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+.star{position:absolute;fill:var(--brand);pointer-events:none}
+.tog{width:40px;height:24px;border-radius:24px;background:var(--brand);position:relative;flex:none;transition:background .2s}.tog:after{content:"";position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
 .tog.off{background:#dccbd0}.tog.off:after{right:auto;left:3px}
 .radio{width:20px;height:20px;border-radius:50%;border:2px solid #d6c3c9;flex:none}.radio.on{border:6px solid var(--brand)}
-/* ---------- slide chrome ---------- */
-.kicker{font-size:20px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
-.stitle{font-family:'Bricolage Grotesque';font-weight:800;font-size:58px;letter-spacing:-.025em;line-height:1}
-.sub{font-size:22px;color:var(--ink2);margin-top:12px;max-width:1100px;line-height:1.35}
-.head{position:absolute;left:96px;top:70px;right:96px}
-.foot{position:absolute;left:96px;right:96px;bottom:34px;display:flex;justify-content:space-between;font-size:16px;color:var(--ink2)}
-.foot .logo{font-size:24px}
-.cap{margin-top:22px;text-align:center;width:372px}
-.cap .n{font-family:'Bricolage Grotesque';font-weight:800;font-size:15px;color:#fff;background:var(--brand);width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
-.cap h4{font-family:'Bricolage Grotesque';font-weight:700;font-size:23px;letter-spacing:-.01em}
-.cap p{font-size:16px;color:var(--ink2);margin-top:5px;line-height:1.35}
-.tag{display:inline-block;margin-top:9px;font-size:13px;font-weight:700;color:var(--brand-d);background:var(--blush);padding:4px 10px;border-radius:20px}
-.arrow{width:70px;flex:none;align-self:center;margin-top:-140px;color:var(--brand)}
-
-html,body{height:100%}
-body{background:var(--cream);display:flex;align-items:center;justify-content:center;gap:90px;overflow:hidden;
- background-image:radial-gradient(circle at 85% 15%,var(--blush) 0,transparent 40%),radial-gradient(circle at 10% 90%,var(--blush) 0,transparent 35%)}
-.body{overflow-y:auto;scrollbar-width:none}.body::-webkit-scrollbar{display:none}
-[data-go],[data-act],.chip,.opt{cursor:pointer}
+.ibox{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none;background:var(--blush);color:var(--brand)}
+.li{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.li .tt{font-weight:700;font-size:14.5px;line-height:1.2}
+.seg{display:flex;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:3px;gap:3px}
+.seg div{flex:1;text-align:center;padding:8px 4px;border-radius:11px;font-size:13px;font-weight:700;color:var(--ink2)}
+.seg div.on{background:var(--brand);color:#fff}
+.top{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+.qa{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 4px;border-radius:18px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:700;text-align:center}
+.qa .ibox{width:40px;height:40px}
+[data-go],[data-act],.chip,.opt{cursor:pointer;-webkit-tap-highlight-color:transparent}
 [data-go]:active,[data-act]:active,.btn:active{transform:scale(.97)}
 .btn,.tab,.chip,[data-go]{transition:transform .12s,background .2s}
-#phone{animation:in .25s ease}
+#phone.anim .body{animation:in .25s ease}
 @keyframes in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
-.toast{position:absolute;left:16px;right:16px;top:58px;z-index:30;background:var(--ink);color:#fff;border-radius:16px;padding:13px 16px;font-size:14px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);animation:in .3s ease}
-.side{width:420px}
-.side .b{display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 16px;border-radius:14px;background:#fff;border:1.5px solid var(--line);font-weight:700;font-size:15px;cursor:pointer}
+.toast{position:absolute;left:16px;right:16px;top:58px;z-index:40;background:var(--ink);color:#fff;border-radius:16px;padding:13px 16px;font-size:14px;font-weight:500;box-shadow:0 12px 30px -10px rgba(0,0,0,.4);animation:in .3s ease;pointer-events:none}
+.shade{position:absolute;inset:0;background:rgba(33,18,26,.45);z-index:35;display:flex;align-items:flex-end;animation:fade .2s}
+@keyframes fade{from{opacity:0}}
+.sheet{background:var(--cream);width:100%;border-radius:28px 28px 0 0;padding:22px 22px 30px;animation:up .25s ease;max-height:90%;overflow:auto;position:relative}
+@keyframes up{from{transform:translateY(40px);opacity:.5}}
+.hl{position:relative;z-index:2;animation:pulse 1.4s ease-in-out infinite;border-radius:16px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,185,64,.0)}50%{box-shadow:0 0 0 5px rgba(245,185,64,.85)}}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:10px}
+.cal div{aspect-ratio:1;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:#fff;border:1px solid var(--line);color:var(--ink2)}
+.cal div.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.cal div.td{outline:2px dashed var(--brand);outline-offset:1px}
+.empty{text-align:center;padding:22px 10px;color:var(--ink2);font-size:13.5px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:9px;border-radius:9px;background:var(--blush);outline:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--brand);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--brand);cursor:pointer}
+.x{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#b9a7ae}
+/* side panel */
+.side{width:430px;max-height:100vh;overflow:auto;padding:24px 0;scrollbar-width:none}
+.side::-webkit-scrollbar{display:none}
+.side .b{display:flex;align-items:center;gap:10px;margin-top:10px;padding:11px 14px;border-radius:14px;background:#fff;border:1.5px solid var(--line);font-weight:700;font-size:14.5px;cursor:pointer;user-select:none}
 .side .b:hover{border-color:var(--brand);color:var(--brand)}
-.side ol{margin:18px 0 0 20px;color:var(--ink2);font-size:16px;line-height:1.7}
-@media (max-width:900px){.side{display:none}body{gap:0}}
+.side .b.pri{background:var(--brand);color:#fff;border-color:var(--brand)}
+.side .b.pri:hover{background:var(--brand-d);color:#fff}
+.tour{margin-top:8px;display:flex;flex-direction:column;gap:3px}
+.tour div{display:flex;gap:12px;align-items:center;padding:6px 12px;border-radius:14px;cursor:pointer;font-size:15px;border:1.5px solid transparent;user-select:none}
+.tour div:hover{background:#fff;border-color:var(--line)}
+.tour div.cur{background:#fff;border-color:var(--brand)}
+.tour b{width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:12.5px;background:var(--blush);color:var(--brand)}
+.tour .ok b{background:var(--green);color:#fff}
+.tour .ok span{color:var(--ink2)}
+.dclock{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 12px;border-radius:20px;background:var(--ink);color:#fff;font-size:13px;font-weight:700}
+.qr{margin-top:18px;display:flex;gap:16px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px}
+.qr svg{width:110px;height:110px;flex:none}
+@media (max-width:980px){.side{display:none}body{gap:0}}
 @media (max-width:600px){
  body{display:block;background:var(--cream)}
  #wrap{position:fixed;inset:0}
@@ -98,36 +120,53 @@ body{background:var(--cream);display:flex;align-items:center;justify-content:cen
  .body{padding-top:14px}
  .tabs{height:auto;min-height:64px;padding:8px 0 max(10px,env(safe-area-inset-bottom))}
  .toast{top:calc(env(safe-area-inset-top) + 10px)}
+ .sheet{padding-bottom:max(30px,env(safe-area-inset-bottom))}
  #phone{zoom:1!important}
 }
-.qr{margin-top:22px;display:flex;gap:16px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px}
-.qr svg{width:120px;height:120px;flex:none}
-</style></head><body><div class="side">
- <div style="font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)">Prototipo navegable</div>
- <div style="margin-top:10px"><span class="logo" style="font-size:84px">PE<span class="d">$</span>ITO<span class="d">$</span></span></div>
- <div class="h" style="font-weight:600;font-size:24px;margin-top:14px;line-height:1.2">Cada pesito suma.<br>Tus buenos hábitos tienen premio.</div>
- <ol><li>Entrá y completá la configuración</li><li>Tocá tu saldo para ver el detalle</li><li>Tocá un grupo para ver el ranking</li><li>Canjeá un café en <b>Canjes</b></li></ol>
- <div class="b" onclick="go('impulse')">⏱&nbsp; Probar “¿Lo compro?”</div>
- <div class="b" onclick="reset()">↺&nbsp; Reiniciar demo</div>
- <div class="qr" id="qr"></div>
- <div style="margin-top:22px;font-size:13px;color:var(--ink2)">Creatividad e Innovación — UM · Grupo 4</div>
-</div><div id="wrap"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script><script>const ST={};
-/* ---------------- icons ---------------- */
+</style></head><body>
+<div class="side" id="side"></div><div id="wrap"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+/* =========================================================
+   Pe$itos — prototipo funcional (todo se guarda en este navegador)
+   ========================================================= */
+const DAY=864e5, KEY='pesitos-v2';
+let ST=null;
+
+/* ---------- helpers ---------- */
+const now=()=>Date.now()+((ST&&ST.offset)||0)*DAY;
+const dk=ts=>{const d=new Date(ts);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const kDate=k=>{const[y,m,d]=k.split('-').map(Number);return new Date(y,m-1,d,12)};
+const kAdd=(k,n)=>{const d=kDate(k);d.setDate(d.getDate()+n);return dk(d.getTime())};
+const today=()=>dk(now());
+const uid=()=>Math.random().toString(36).slice(2,9);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const M=n=>'$ '+Math.round(n).toLocaleString('es-UY');
+const N=n=>Math.round(n).toLocaleString('es-UY');
+const sameMonth=ts=>{const a=new Date(ts),b=new Date(now());return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()};
+const fmtDay=ts=>{const s=new Date(ts).toLocaleDateString('es-UY',{weekday:'long',day:'numeric',month:'long'});return s[0].toUpperCase()+s.slice(1)};
+const fmtShort=ts=>new Date(ts).toLocaleDateString('es-UY',{day:'numeric',month:'short'});
+const fmtHour=ts=>new Date(ts).toLocaleTimeString('es-UY',{hour:'2-digit',minute:'2-digit'});
+const monthName=()=>new Date(now()).toLocaleDateString('es-UY',{month:'long'});
+const daysInMonth=ts=>{const d=new Date(ts);return new Date(d.getFullYear(),d.getMonth()+1,0).getDate()};
+const ago=ts=>{const k=dk(ts),t=today();if(k===t)return 'hoy '+fmtHour(ts);if(k===kAdd(t,-1))return 'ayer';const n=Math.round((kDate(t)-kDate(k))/DAY);return n<7?'hace '+n+' días':fmtShort(ts)};
+const initials=n=>String(n).trim().split(/\s+/).slice(0,2).map(w=>w[0]||'').join('').toUpperCase()||'YO';
+const firstName=n=>String(n).trim().split(/\s+/)[0]||'vos';
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+
+/* ---------- icons ---------- */
 const P={
 home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
 gift:'<rect x="3" y="8" width="18" height="5" rx="1"/><path d="M5 13v7h14v-7M12 8v12M12 8S10.5 3.5 8 4.5 9 8 12 8m0 0s1.5-4.5 4-3.5S15 8 12 8"/>',
 user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.5 3.5-5.5 6.5-5.5s5.5 2 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .7 3.2 2.6 3.7 5.5"/>',
 bell:'<path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/>',
-back:'<path d="M15 5l-7 7 7 7"/>',
-chev:'<path d="M9 5l7 7-7 7"/>',
+back:'<path d="M15 5l-7 7 7 7"/>',chev:'<path d="M9 5l7 7-7 7"/>',
 coffee:'<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/>',
 shirt:'<path d="M8 3 3 6l2 5 2-1v11h10V10l2 1 2-5-5-3a4 4 0 0 1-8 0z"/>',
 plane:'<path d="M2 16l20-8-4 12-6-4-3 4v-5l9-7-11 6z"/>',
 ticket:'<path d="M3 8a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v2h18v-2a2 2 0 0 1 0-4 2 2 0 0 1 0-4V6H3zM14 6v12"/>',
 mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
-sheet:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 3v18"/>',
-apps:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
 pen:'<path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/>',
 check:'<path d="M5 12.5 10 17 19 7"/>',
 flame:'<path d="M12 3c1 4 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-3.5 2-5 1 1.5 1.5 2.5 1.5 2.5S12 7 12 3z"/>',
@@ -143,224 +182,629 @@ bag:'<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/>',
 plus:'<path d="M12 5v14M5 12h14"/>',
 copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
 bolt:'<path d="M13 3 5 13h6l-1 8 8-10h-6z"/>',
-moon:'<path d="M20 14A8 8 0 1 1 10 4a6.5 6.5 0 0 0 10 10z"/>',
-spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>'
+spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+bus:'<rect x="5" y="3" width="14" height="15" rx="3"/><path d="M5 12h14M8 21v-3M16 21v-3"/><circle cx="8.5" cy="15" r=".6"/><circle cx="15.5" cy="15" r=".6"/>',
+cart:'<path d="M3 4h2l2.5 11h11L21 7H6.2"/><circle cx="9" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/>',
+moto:'<circle cx="6" cy="16" r="3"/><circle cx="18" cy="16" r="3"/><path d="M9 16h5l3-6h-4M6 13l3-4h3"/>',
+glass:'<path d="M7 3h10l-1 7a4 4 0 0 1-8 0zM12 14v7M8 21h8"/>',
+dots:'<circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/>',
+x:'<path d="M6 6l12 12M18 6 6 18"/>',
+sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
+share:'<path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/>',
+cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+logout:'<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/>',
+fwd:'<path d="M5 5l7 7-7 7M12 5l7 7-7 7"/>'
 };
-const I=(n,s=22,c='')=>`<svg class="ico" style="width:${s}px;height:${s}px;${c}" viewBox="0 0 24 24">${P[n]}</svg>`;
+const I=(n,s=22,c='')=>`<svg class="ico" style="width:${s}px;height:${s}px;${c}" viewBox="0 0 24 24">${P[n]||''}</svg>`;
 const STAR=(x,y,s,rot=0,fill='var(--brand)')=>`<svg class="star" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;transform:rotate(${rot}deg);fill:${fill}" viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6l-6.4 3.5L7 14l-5.3-5 7.2-.9z"/></svg>`;
-const LOGO=(s)=>`<span class="logo" style="font-size:${s}px">PE<span class="d">$</span>ITO<span class="d">$</span></span>`;
+const LOGO=s=>`<span class="logo" style="font-size:${s}px">PE<span class="d">$</span>ITO<span class="d">$</span></span>`;
 const COIN=(s=18)=>`<span class="coin" style="width:${s}px;height:${s}px;font-size:${s*.55}px">$</span>`;
 
-const sb=(dark)=>`<div class="sb" style="${dark?'color:#fff':''}"><span>9:41</span><span class="ic">
+/* ---------- catálogos ---------- */
+const CATS=[['Comida','coffee'],['Café','coffee'],['Delivery','moto'],['Salidas','glass'],['Super','cart'],['Transporte','bus'],['Ropa','shirt'],['Otro','dots']];
+const catIco=c=>(CATS.find(x=>x[0]===c)||[0,'dots'])[1];
+const REWARDS=[
+ {id:'cafe',cat:'Comida',ic:'coffee',t:'Café + medialuna',s:'Café Amapola · Pocitos',p:60,feat:true},
+ {id:'desa',cat:'Comida',ic:'coffee',t:'Desayuno para dos',s:'La Panadería del Barrio',p:140},
+ {id:'smoo',cat:'Comida',ic:'glass',t:'Smoothie grande',s:'Jugos Ya · Cordón',p:80},
+ {id:'reme',cat:'Moda',ic:'shirt',t:'15% off en remeras',s:'Indumentaria Rambla',p:120},
+ {id:'tote',cat:'Moda',ic:'bag',t:'Tote bag de diseño',s:'Feria de diseñadores',p:90},
+ {id:'cot',cat:'Viajes',ic:'bus',t:'Pasaje a Punta del Este',s:'Ida · cualquier horario',p:300},
+ {id:'flo',cat:'Viajes',ic:'plane',t:'10% off pasaje a Floripa',s:'Agencia Viajá Sur',p:500},
+ {id:'cine',cat:'Experiencias',ic:'ticket',t:'2x1 en el cine',s:'Cualquier función',p:240},
+ {id:'bowl',cat:'Experiencias',ic:'spark',t:'Partida de bowling',s:'Bowling Carrasco',p:180},
+ {id:'surf',cat:'Experiencias',ic:'spark',t:'Clase de surf',s:'Experiencias · La Barra',p:400}];
+const GREWARDS=[
+ {id:'mer',ic:'coffee',t:'Merienda para',s:'Café Amapola · café + medialuna c/u',p:300},
+ {id:'cine4',ic:'ticket',t:'4x3 en el cine para',s:'Entradas para el grupo',p:360},
+ {id:'parr',ic:'glass',t:'20% off cena para',s:'Parrilla La Esquina',p:450},
+ {id:'alq',ic:'plane',t:'15% off en alojamiento para',s:'Agencia Viajá Sur',p:900}];
+const CHALLENGES=[
+ {type:'nodeliv',t:'Sin delivery por 7 días',s:'No registres gastos en Delivery',pts:40},
+ {type:'cafe3',t:'Máximo 3 cafés afuera',s:'Hasta 3 gastos en Café esta semana',pts:40},
+ {type:'reg5',t:'Registrá 5 días esta semana',s:'Anotá tus gastos 5 de los 7 días',pts:40}];
+const MILESTONES=[[3,20],[7,50],[14,100],[21,150],[30,200]];
+const MAILFEED=[['Starbucks','Café',190],['PedidosYa','Delivery',640],['Tienda Inglesa','Super',1250],['STM · boleto','Transporte',50],['Kinko','Comida',230],['Zara','Ropa',1490],['Cine Movie','Salidas',420],['Disco','Super',870]];
+const BOTS={mp:['Mati','MP','#7C0A29'],cs:['Caro','CS','#C98A12'],jm:['Juli','JM','#E2365F'],nb:['Nico','NB','#6B5560'],lg:['Lu','LG','#178A5E'],fa:['Fede','FA','#8E3B5A'],vi:['Vicky','VI','#B35A12'],to:['Tomi','TO','#3B5B8E'],ag:['Agus','AG','#5E8E3B'],pa:['Pau','PA','#A1123E']};
+const FRIENDS=[['jm','Juli Martínez','12 amigos en común'],['mp','Mati Pereira','Te invitó a “Viaje a Floripa”'],['cs','Caro Silva','8 amigos en común'],['nb','Nico Benítez','5 amigos en común'],['lg','Lu García','3 amigos en común']];
+
+/* ---------- estado ---------- */
+function blank(){return{v:2,screen:'login',logged:false,demo:false,offset:0,user:null,pts:0,ledger:[],expenses:[],nospend:[],savings:[],pauses:[],groups:[],redeems:[],notifs:[],awards:[],friends:FRIENDS.map(([id,n,s])=>({id,n,s,follow:false})),ch:null,best:0,since:today(),done:{},toast:'',sheet:null,hl:'',cat:'Comida',gid:null,gtab:'rank',ob:{},form:{},lastSync:'',closed:{}}}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.v===2){s.toast='';s.sheet=null;s.hl='';return s}}catch(e){}return null}
+function save(){try{const c=Object.assign({},ST,{toast:'',sheet:null});localStorage.setItem(KEY,JSON.stringify(c))}catch(e){}}
+
+function mkGroup(name,goal,deadline,memberIds,opts={}){const ini=initials(name);return Object.assign({id:uid(),name,ini,color:['#7C0A29','#E2365F','#C98A12','#178A5E','#3B5B8E'][rnd(0,4)],goal,saved:0,deadline,pool:0,streak:0,members:memberIds.map(id=>({id,pts:0})),feed:[{ts:now(),t:'Se creó el grupo'}]},opts)}
+function newChallenge(i,startKey){const c=CHALLENGES[i%CHALLENGES.length];return{i:i%CHALLENGES.length,...c,start:startKey,end:kAdd(startKey,6),status:'on'}}
+
+/* ---------- demo (Sofi) ---------- */
+function seedDemo(){
+ ST=blank();ST.demo=true;ST.logged=true;
+ ST.user={name:'Sofi Rodríguez',email:'sofi.rodriguez@gmail.com',age:21,tags:['Estudio','Trabajo'],budget:18000,savePct:15,income:24000,logMode:'mail',reports:'Mensual',charts:true};
+ const t=today(),at=(d,h=13)=>{const x=kDate(kAdd(t,d));x.setHours(h,rnd(0,59));return x.getTime()};
+ ST.since=kAdd(t,-40);
+ const plan=[[-13,'Café','Café de la facu',180],[-13,'Transporte','Boleto',50],[-12,'Comida','Almuerzo',420],[-11,'Super','Súper de la semana',1180],[-10,'Café','Café + alfajor',210],[-9,'Salidas','Cumple de Juli',650],[-8,'Transporte','Uber',190],[-7,'Comida','Almuerzo',380],[-6,'Café','Café',160],[-6,'Otro','Fotocopias',120],[-5,'Super','Súper',720],[-4,'Ropa','Remera',890],[-3,'Comida','Milanesa al pan',350],[-3,'Transporte','Boleto',50],[-2,'Café','Café',170],[-2,'Salidas','Bar con amigas',540],[-1,'Comida','Almuerzo',390],[-1,'Café','Café',160]];
+ ST.expenses=plan.map(([d,cat,note,amt])=>({id:uid(),ts:at(d,rnd(9,20)),cat,note,amt})).sort((a,b)=>b.ts-a.ts);
+ const L=(d,pts,t2,sub,ic)=>ST.ledger.push({id:uid(),ts:at(d,21),pts,t:t2,sub,ic});
+ L(-30,20,'Bienvenida a Pe$itos','Completaste tu perfil','spark');
+ for(let d=-13;d<=-1;d++)L(d,10,'Registraste tus gastos','Un día más en tu racha','pen');
+ const s3=kAdd(t,-13);L(-11,20,'Racha de 3 días','Registrando gastos','flame');L(-7,50,'Racha de 7 días','Registrando gastos','flame');
+ ST.awards=['r3-'+s3,'r7-'+s3];
+ L(-9,20,'Aportaste $ 2.000','Viaje a Floripa','piggy');
+ L(-5,15,'Ahorraste $ 1.500','Mi ahorro','piggy');
+ L(-3,50,'Evitaste una compra impulsiva','Esperaste 24 h y no compraste la campera','clock');
+ L(-2,-60,'Canjeaste Café + medialuna','Café Amapola','gift');
+ ST.ledger.sort((a,b)=>b.ts-a.ts);
+ ST.pts=ST.ledger.reduce((s,x)=>s+x.pts,0);
+ ST.savings=[{id:uid(),ts:at(-9),amt:2000,gid:'floripa'},{id:uid(),ts:at(-5),amt:1500,gid:null}];
+ ST.redeems=[{id:uid(),ts:at(-2),name:'Café + medialuna',place:'Café Amapola',cost:60,code:'PES-4821',exp:at(5),group:null,used:true}];
+ ST.pauses=[{id:uid(),item:'Auriculares',amt:1900,cat:'Otro',ts:now()-18*36e5,until:now()+6*36e5,status:'wait'},{id:uid(),item:'Campera de jean',amt:2400,cat:'Ropa',ts:at(-4,20),until:at(-3,20),status:'won'}];
+ ST.best=13;
+ ST.friends.forEach(f=>f.follow=['jm','mp','cs'].includes(f.id));
+ ST.groups=[
+  {id:'floripa',name:'Viaje a Floripa',ini:'VF',color:'#7C0A29',goal:40000,saved:24800,deadline:'2027-01-10',pool:520,streak:9,
+   members:[{id:'mp',pts:340},{id:'me'},{id:'cs',pts:180},{id:'jm',pts:150},{id:'nb',pts:90}],
+   feed:[{ts:at(-1,19),t:'Mati aportó $ 1.000 al viaje'},{ts:at(-2,18),t:'Sofi canjeó Café + medialuna'},{ts:at(-3,11),t:'Caro cumplió 5 días de racha'},{ts:at(-9,20),t:'Sofi aportó $ 2.000 al viaje'}]},
+  {id:'liceo',name:'Los del liceo',ini:'LL',color:'#E2365F',goal:0,saved:0,deadline:'',pool:610,streak:4,
+   members:[{id:'me'},{id:'fa',pts:170},{id:'vi',pts:160},{id:'to',pts:130},{id:'ag',pts:120},{id:'pa',pts:95},{id:'lg',pts:80},{id:'nb',pts:60}],
+   feed:[{ts:at(-1,22),t:'Fede subió al 2º puesto'},{ts:at(-4,15),t:'Vicky canjeó 2x1 en el cine'}]}];
+ ST.ch={...newChallenge(0,kAdd(t,-3))};
+ ST.notifs=[{id:uid(),ts:at(-1,19),t:'Mati aportó $ 1.000 a Viaje a Floripa',read:false},{id:uid(),ts:now()-18*36e5,t:'Pusiste en pausa: Auriculares ($ 1.900). Te avisamos en 24 h.',read:false},{id:uid(),ts:at(-1,21),t:'¡Llevás 13 días de racha! Registrá hoy para llegar a 14 y ganar +100.',read:true}];
+ ST.screen='home';ST.done={demo:1};
+}
+
+/* ---------- cálculos ---------- */
+const meName=()=>ST.user?firstName(ST.user.name):'Vos';
+function monthExp(){return ST.expenses.filter(e=>sameMonth(e.ts))}
+function spentMonth(){return monthExp().reduce((s,e)=>s+e.amt,0)}
+function daySpend(k){return ST.expenses.filter(e=>dk(e.ts)===k).reduce((s,e)=>s+e.amt,0)}
+function perDay(){const d=new Date(now()),left=daysInMonth(now())-d.getDate()+1;return Math.max(0,(ST.user.budget-spentMonth())/left)}
+function logSet(){const s=new Set(ST.expenses.map(e=>dk(e.ts)));ST.nospend.forEach(k=>s.add(k));return s}
+function loggedToday(){return logSet().has(today())}
+function streakInfo(){const s=logSet();let k=today();if(!s.has(k))k=kAdd(k,-1);const end=k;let n=0;while(s.has(k)){n++;k=kAdd(k,-1)}return{n,start:kAdd(end,-(n-1)),alive:n>0,todayDone:s.has(today())}}
+function budgetStreak(){let n=0,k=kAdd(today(),-1);const lim=()=>ST.user.budget/daysInMonth(kDate(k).getTime());while(k>=ST.since&&n<120){if(daySpend(k)<=lim())n++;else break;k=kAdd(k,-1)}return n}
+const wkOf=k=>Math.floor((Date.UTC(...k.split('-').map((v,i)=>i===1?v-1:+v))/DAY+3)/7);
+function saveStreak(){const w=new Set(ST.savings.map(s=>wkOf(dk(s.ts))));let c=wkOf(today());if(!w.has(c))c--;let n=0;while(w.has(c)){n++;c--}return n}
+function savedMonth(){return ST.savings.filter(s=>sameMonth(s.ts)).reduce((a,s)=>a+s.amt,0)}
+function saveGoal(){const u=ST.user;return Math.round((u.income||u.budget)*u.savePct/100)}
+function weekPts(){const lim=now()-7*DAY;return ST.ledger.filter(x=>x.ts>=lim&&x.pts>0).reduce((s,x)=>s+x.pts,0)}
+function monthPts(){return ST.ledger.filter(x=>x.pts>0&&sameMonth(x.ts)).reduce((s,x)=>s+x.pts,0)}
+function totalPts(){return ST.ledger.filter(x=>x.pts>0).reduce((s,x)=>s+x.pts,0)}
+function members(g){return g.members.map(m=>m.id==='me'?{id:'me',n:meName(),ini:initials(ST.user.name),c:'#B3123E',pts:monthPts(),me:true}:{id:m.id,n:BOTS[m.id][0],ini:BOTS[m.id][1],c:BOTS[m.id][2],pts:m.pts||0}).sort((a,b)=>b.pts-a.pts)}
+function myRank(g){return members(g).findIndex(m=>m.me)+1}
+function grp(id){return ST.groups.find(g=>g.id===id)}
+function chProgress(){const c=ST.ch;if(!c)return null;const inR=ST.expenses.filter(e=>{const k=dk(e.ts);return k>=c.start&&k<=c.end});
+ let fail=false,txt='';
+ if(c.type==='nodeliv'){fail=inR.some(e=>e.cat==='Delivery');txt=fail?'Registraste un delivery':'Vas bien, seguí así'}
+ if(c.type==='cafe3'){const n=inR.filter(e=>e.cat==='Café').length;fail=n>3;txt=`${Math.min(n,4)} de 3 cafés`}
+ if(c.type==='reg5'){const s=logSet();let n=0;for(let k=c.start;k<=c.end;k=kAdd(k,1))if(s.has(k))n++;txt=`${n} de 5 días`;if(n>=5&&c.status==='on')return{win:true,txt}}
+ const day=Math.min(7,Math.round((kDate(today())-kDate(c.start))/DAY)+1);return{fail,txt,day}}
+
+/* ---------- acciones con puntos ---------- */
+function earn(pts,t,sub,ic){if(!pts)return;ST.pts+=pts;ST.ledger.unshift({id:uid(),ts:now(),pts,t,sub,ic});if(pts>0)ST.groups.forEach(g=>g.pool+=pts)}
+function notify(t){ST.notifs.unshift({id:uid(),ts:now(),t,read:false})}
+let celebrateQ=[];
+function checkStreak(){const s=streakInfo();ST.best=Math.max(ST.best||0,s.n);
+ MILESTONES.forEach(([m,p])=>{const key='r'+m+'-'+s.start;if(s.n>=m&&!ST.awards.includes(key)){ST.awards.push(key);earn(p,`Racha de ${m} días`,'Registrando gastos','flame');celebrateQ.push({title:`¡Racha de ${m} días!`,sub:`Registraste tus gastos ${m} días seguidos.`,pts:p});ST.groups.forEach(g=>g.feed.unshift({ts:now(),t:`${meName()} llegó a ${m} días de racha`}))}})}
+function checkChallenge(){const c=ST.ch,p=chProgress();if(c&&c.status==='on'&&p&&p.win){c.status='won';earn(c.pts,'Desafío cumplido',c.t,'target');celebrateQ.push({title:'¡Desafío cumplido!',sub:c.t,pts:c.pts})}}
+function registerDay(){if(!ST.closed['reg-'+today()]){ST.closed['reg-'+today()]=1;earn(10,'Registraste tus gastos','Un día más en tu racha','pen');return 10}return 0}
+function addExpense(amt,cat,note,dayOff=0){const ts=dayOff?kDate(kAdd(today(),dayOff)).getTime()+rnd(0,6)*36e5:now();
+ ST.expenses.unshift({id:uid(),ts,amt,cat,note});ST.expenses.sort((a,b)=>b.ts-a.ts);
+ const before=ST.pts;let got=0;if(dayOff===0)got=registerDay();checkStreak();checkChallenge();return ST.pts-before}
+function afterGain(msg){if(celebrateQ.length){const c=celebrateQ.shift();ST.sheet={type:'celebrate',...c,msg}}else if(msg)toast(msg)}
+
+/* ---------- pasar el tiempo (modo demo) ---------- */
+function advanceDay(){
+ const left=today();
+ // cierre del día que termina
+ if(ST.logged&&ST.user){
+  const lim=ST.user.budget/daysInMonth(kDate(left).getTime());const sp=daySpend(left);
+  if(logSet().has(left)&&sp<=lim&&!ST.closed['bud-'+left]){ST.closed['bud-'+left]=1;earn(5,'Día dentro del presupuesto',`Gastaste ${M(sp)} de ${M(lim)}`,'target')}
+ }
+ ST.offset+=1;
+ ST.groups.forEach(g=>{let any=false;g.members.forEach(m=>{if(m.id==='me')return;if(Math.random()<.75){const p=rnd(5,30);m.pts=(m.pts||0)+p;g.pool+=p;any=true}});
+  if(g.goal&&g.saved<g.goal&&Math.random()<.6){const ms=g.members.filter(m=>m.id!=='me');const m=ms[rnd(0,ms.length-1)];const a=rnd(2,10)*100;g.saved=Math.min(g.goal,g.saved+a);g.feed.unshift({ts:now()-rnd(1,8)*36e5,t:`${BOTS[m.id][0]} aportó ${M(a)} al objetivo`});notify(`${BOTS[m.id][0]} aportó ${M(a)} a ${g.name}`)}
+  g.streak=any?(g.streak||0)+1:0});
+ ST.pauses.filter(p=>p.status==='wait'&&now()>=p.until&&!p.told).forEach(p=>{p.told=true;notify(`Pasaron 24 h: ¿todavía querés ${p.item}? Decidí y ganá +50 si no la comprás.`)});
+ const c=ST.ch;if(c&&today()>c.end){const p=chProgress();if(c.status==='on'){if(p&&!p.fail&&c.type!=='reg5'){c.status='won';earn(c.pts,'Desafío cumplido',c.t,'target');notify(`¡Cumpliste el desafío “${c.t}”! +${c.pts}`)}else{c.status='lost';notify(`No llegaste con el desafío “${c.t}”. ¡Hay uno nuevo!`)}}ST.ch=newChallenge(c.i+1,today())}
+ const s=streakInfo();if(!s.todayDone&&s.n>0)notify(`Tu racha de ${s.n} días sigue viva: registrá hoy para no perderla.`);
+ toast(`Demo: pasó un día. Hoy es ${fmtDay(now()).toLowerCase()}.`);
+}
+
+/* ---------- UI base ---------- */
+const sb=()=>`<div class="sb"><span>${fmtHour(now())}</span><span class="ic">
 <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
 <svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor"/><rect x="23.5" y="4" width="1.5" height="4" rx=".7" fill="currentColor" opacity=".5"/></svg></span></div>`;
-const tabs=(on)=>`<div class="tabs">${[['home','Inicio'],['gift','Canjes'],['user','Usuario']].map(([i,t])=>`<div class="tab ${t===on?'on':''}" data-go="${{Inicio:'home',Canjes:'rewards',Usuario:'profile'}[t]}">${I(i,23)}${t}</div>`).join('')}</div>`;
-const phone=(inner,{dark=false,bg='',tab=null}={})=>`<div class="phone"><div class="scr" style="${bg}"><div class="notch"></div>${sb(dark)}${inner}${tab?tabs(tab):''}${ST.toast?`<div class="toast">${ST.toast}</div>`:''}</div></div>`;
+const tabs=on=>`<div class="tabs">${[['home','Inicio','home'],['users','Grupos','groups'],['plus','','add'],['gift','Canjes','rewards'],['user','Usuario','profile']].map(([i,t,s])=>s==='add'?`<div class="tab mid" data-go="add" data-hl="tab-add"><span>${I('plus',26,'stroke-width:2.4')}</span></div>`:`<div class="tab ${s===on?'on':''}" data-go="${s}">${I(i,23)}${t}</div>`).join('')}</div>`;
+const back=(to='home',title='',right='')=>`<div class="top"><span data-go="${to}" style="display:flex;padding:4px 4px 4px 0">${I('back',22)}</span><span class="t2" style="font-size:18px">${title}</span><span class="sp"></span>${right}</div>`;
+const S={},SH={};
 
-/* ---------------- screens ---------------- */
-const S={};
-S.login=()=>phone(`<div class="body" style="display:flex;flex-direction:column;padding:0 26px">
+/* ---------- login ---------- */
+S.login=()=>`<div class="body" style="display:flex;flex-direction:column;padding:0 26px 30px">
  ${STAR(250,20,54,12)}${STAR(296,66,30,-10,'var(--gold)')}
- <div style="margin-top:118px">${LOGO(66)}</div>
+ <div style="margin-top:96px">${LOGO(66)}</div>
  <div style="font-size:16px;color:var(--ink2);margin-top:12px">Cada pesito suma.<br>Tus buenos hábitos tienen premio.</div>
- <div style="margin-top:44px;display:flex;flex-direction:column;gap:12px">
-  <div class="lbl" style="margin-bottom:-6px">Usuario</div><div class="inp">${I('mail',18)}<b>sofi.rodriguez@gmail.com</b></div>
-  <div class="lbl" style="margin-bottom:-6px;margin-top:4px">Contraseña</div><div class="inp">${I('lock',18)}<b style="letter-spacing:3px">••••••••</b></div>
-  <div class="btn" data-go="ob1" style="margin-top:10px">Entrar</div>
-  <div class="row small" style="gap:10px;margin:4px 0"><i style="flex:1;height:1px;background:var(--line)"></i>o<i style="flex:1;height:1px;background:var(--line)"></i></div>
-  <div class="btn ghost" data-go="ob1"><span style="width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px">G</span>Continuar con Google</div>
+ <div class="btn" data-act="demo" data-hl="demo" style="margin-top:34px;background:var(--ink)">${I('bolt',19,'color:var(--gold)')}Probar sin crearme usuario</div>
+ <div class="small" style="text-align:center;margin-top:8px;font-size:12px">Entrás como Sofi, con un mes de datos cargados</div>
+ <div class="row small" style="gap:10px;margin:22px 0 14px"><i style="flex:1;height:1px;background:var(--line)"></i>o creá tu cuenta<i style="flex:1;height:1px;background:var(--line)"></i></div>
+ <div style="display:flex;flex-direction:column;gap:10px">
+  <div class="inp">${I('user',18)}<input id="f-name" placeholder="Tu nombre" autocomplete="given-name" value="${esc(ST.form.name||'')}"></div>
+  <div class="inp">${I('mail',18)}<input id="f-mail" type="email" placeholder="Tu mail" autocomplete="email" value="${esc(ST.form.mail||'')}"></div>
+  <div class="btn" data-act="signup">Crear mi cuenta</div>
  </div>
- <div class="small" style="text-align:center;margin-top:auto;margin-bottom:34px">¿No tenés cuenta? <b data-go="ob1" style="color:var(--brand)">Registrate</b></div>
-</div>`);
+ <div class="small" style="text-align:center;margin-top:auto;padding-top:18px;font-size:11.5px">Prototipo: tus datos quedan solo en este dispositivo.</div>
+</div>`;
 
+/* ---------- onboarding ---------- */
 const obHead=(n,t,s)=>`<div class="row" style="gap:12px;margin-top:4px"><span data-go="${['login','ob1','ob2'][n-1]}" style="display:flex">${I('back',22)}</span><div class="step" style="flex:1">${[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div><span class="small" style="font-weight:700">${n}/3</span></div>
 <div class="t1" style="margin-top:20px;font-size:27px">${t}</div><div class="small" style="font-size:14px;margin-top:6px;line-height:1.4">${s}</div>`;
-
-S.ob1=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
- ${obHead(1,'Contanos de vos','Con esto armamos metas a tu medida, no genéricas.')}
+S.ob1=()=>{const o=ST.ob;return`<div class="body" style="display:flex;flex-direction:column">
+ ${obHead(1,`Contanos de vos, ${esc(firstName(o.name))}`,'Con esto armamos metas a tu medida, no genéricas.')}
  <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
-  <div class="card"><div class="lbl">Presupuesto del mes</div><div class="row" style="margin-top:6px"><span class="pts" style="font-size:30px">$ 18.000</span><span class="sp"></span><span class="small">UYU</span></div></div>
-  <div class="card"><div class="row"><div class="lbl">Ahorro objetivo</div><span class="sp"></span><span class="pts" style="font-size:22px;color:var(--brand)">15%</span></div>
-   <div style="position:relative;margin-top:14px"><div class="bar"><i style="width:30%"></i></div><span style="position:absolute;left:30%;top:-6px;width:21px;height:21px;margin-left:-10px;border-radius:50%;background:#fff;border:3px solid var(--brand)"></span></div>
-   <div class="row small" style="margin-top:8px"><span>0%</span><span class="sp"></span><span>= $ 3.600 por mes</span><span class="sp"></span><span>50%</span></div></div>
-  <div class="card"><div class="row"><div class="lbl">Ingresos</div><span class="sp"></span><span class="small">si tenés</span></div><div class="row" style="margin-top:6px"><span class="pts" style="font-size:24px">$ 24.000</span><span class="sp"></span><span class="small">sueldo part-time</span></div></div>
-  <div><div class="lbl" style="margin:4px 0 8px">Tu perfil</div><div style="display:flex;flex-wrap:wrap;gap:7px">
-   <span class="chip on">${I('check',14)}Estudio</span><span class="chip on">${I('check',14)}Trabajo</span><span class="chip">Emprendo</span><span class="chip on">21 años</span><span class="chip">Vivo solo/a</span></div></div>
+  <div class="card"><div class="lbl">Presupuesto del mes</div><div class="inp big" style="border:0;padding:0;height:46px">$<input id="o-bud" inputmode="numeric" value="${o.budget??18000}"><span class="small">UYU</span></div></div>
+  <div class="card"><div class="row"><div class="lbl">Ahorro objetivo</div><span class="sp"></span><span class="pts" id="o-pctv" style="font-size:22px;color:var(--brand)">${o.savePct??15}%</span></div>
+   <input type="range" id="o-pct" min="0" max="50" step="5" value="${o.savePct??15}" style="margin-top:14px">
+   <div class="row small" style="margin-top:8px"><span>0%</span><span class="sp"></span><span>50%</span></div></div>
+  <div class="card"><div class="row"><div class="lbl">Ingresos del mes</div><span class="sp"></span><span class="small">si tenés</span></div><div class="inp big" style="border:0;padding:0;height:44px">$<input id="o-inc" inputmode="numeric" placeholder="0" value="${o.income||''}"></div></div>
+  <div><div class="lbl" style="margin:4px 0 8px">Tu perfil</div><div class="chips">
+   ${['Estudio','Trabajo','Emprendo','Vivo solo/a'].map(t=>`<span class="chip ${(o.tags||[]).includes(t)?'on':''}" data-act="obtag" data-t="${t}">${(o.tags||[]).includes(t)?I('check',14):''}${t}</span>`).join('')}</div></div>
  </div>
- <div class="btn" data-go="ob2" style="margin:auto 0 30px">Siguiente</div>
-</div>`);
-
-const opt=(ic,t,s,on)=>`<div class="card row" style="gap:12px;padding:12px 14px;${on?'border:2px solid var(--brand);background:#FFF9FA':''}"><span style="width:40px;height:40px;border-radius:12px;background:${on?'var(--brand)':'var(--blush)'};color:${on?'#fff':'var(--brand)'};display:flex;align-items:center;justify-content:center;flex:none">${I(ic,20)}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${t}</div><div class="small" style="font-size:12px;margin-top:2px">${s}</div></div><span class="radio ${on?'on':''}"></span></div>`;
-S.ob2=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
+ <div class="btn" data-act="ob1" style="margin:22px 0 14px">Siguiente</div>
+</div>`};
+const opt=(ic,t,s,on,act,val)=>`<div class="card row" data-act="${act}" data-v="${val}" style="gap:12px;padding:12px 14px;${on?'border:2px solid var(--brand);background:#FFF9FA':''}"><span class="ibox" style="width:40px;height:40px;background:${on?'var(--brand)':'var(--blush)'};color:${on?'#fff':'var(--brand)'}">${I(ic,20)}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${t}</div><div class="small" style="font-size:12px;margin-top:2px">${s}</div></div><span class="radio ${on?'on':''}"></span></div>`;
+S.ob2=()=>{const o=ST.ob;return`<div class="body" style="display:flex;flex-direction:column">
  ${obHead(2,'¿Cómo registrás tus gastos?','Automático con tu mail o a mano en la app. Elegí lo que te quede más cómodo.')}
  <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
-  ${opt('mail','Conectar mi mail','Leemos los avisos de compra de Itaú y registramos cada gasto solo',true)}
-  ${opt('pen','Registrar acá en Pesitos','Anotás cada gasto en 2 toques, con categorías',false)}
-  <div class="row" style="gap:10px;padding:10px 12px;border-radius:14px;background:var(--green-l);font-size:12.5px;color:#0f5c3f">${I('lock',17)}<span>Solo leemos los avisos de compra. Nada más de tu mail.</span></div>
+  ${opt('mail','Conectar mi mail','Leemos los avisos de compra del banco y registramos cada gasto solo',o.logMode==='mail','oblog','mail')}
+  ${opt('pen','Registrar acá en Pe$itos','Anotás cada gasto en 2 toques, con categorías',o.logMode!=='mail','oblog','manual')}
+  <div class="row" style="gap:10px;padding:10px 12px;border-radius:14px;background:var(--green-l);font-size:12.5px;color:#0f5c3f">${I('lock',17)}<span>Solo leemos los avisos de compra. En el prototipo los simulamos.</span></div>
  </div>
  <div class="lbl" style="margin:18px 0 8px">Informes</div>
- <div style="display:flex;gap:7px"><span class="chip">Semanal</span><span class="chip on">Mensual</span><span class="chip">No, gracias</span></div>
- <div class="row" style="margin-top:12px;font-size:14px;gap:10px">${I('chart',19,'color:var(--brand)')}Incluir gráficas<span class="sp"></span><span class="tog"></span></div>
- <div class="btn" data-go="ob3" style="margin:auto 0 30px">Siguiente</div>
-</div>`);
-
-const friend=(c,ini,n,s,b)=>`<div class="row" style="gap:12px;padding:9px 0"><span class="av" style="background:${c}">${ini}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${n}</div><div class="small" style="font-size:12px">${s}</div></div>${b?`<span class="chip on" style="height:32px">Seguir</span>`:`<span class="chip" style="height:32px">Siguiendo</span>`}</div>`;
-S.ob3=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
+ <div class="chips">${['Semanal','Mensual','No, gracias'].map(r=>`<span class="chip ${o.reports===r?'on':''}" data-act="obrep" data-v="${r}">${r}</span>`).join('')}</div>
+ <div class="row" style="margin-top:14px;font-size:14px;gap:10px" data-act="obchart">${I('chart',19,'color:var(--brand)')}Incluir gráficas<span class="sp"></span><span class="tog ${o.charts===false?'off':''}"></span></div>
+ <div class="btn" data-go="ob3" style="margin:auto 0 14px">Siguiente</div>
+</div>`};
+const friendRow=f=>`<div class="row" style="gap:12px;padding:9px 0"><span class="av" style="background:${BOTS[f.id][2]}">${BOTS[f.id][1]}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${f.n}</div><div class="small" style="font-size:12px">${f.s}</div></div><span class="chip ${f.follow?'':'on'}" data-act="follow" data-id="${f.id}">${f.follow?'Siguiendo':'Seguir'}</span></div>`;
+S.ob3=()=>{const q=(ST.form.q||'').toLowerCase();return`<div class="body" style="display:flex;flex-direction:column">
  ${obHead(3,'Sumá a tus amigos','Ahorrar en grupo es más fácil (y más divertido).')}
- <div class="inp" style="margin-top:16px;height:44px">${I('search',18)}Buscar por nombre o mail</div>
- <div style="margin-top:6px">
-  ${friend('#E2365F','JM','Juli Martínez','12 amigos en común',false)}
-  ${friend('#7C0A29','MP','Mati Pereira','Te invitó a "Viaje a Floripa"',true)}
-  ${friend('#C98A12','CS','Caro Silva','8 amigos en común',true)}
- </div>
- <div class="card" style="margin-top:8px;background:var(--blush);border-color:var(--blush2)">
-  <div class="row" style="gap:10px"><span style="width:38px;height:38px;border-radius:12px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center">${I('plus',20)}</span><div><div class="t2">Crear un grupo</div><div class="small" style="font-size:12px">Con un objetivo en común o para competir</div></div></div>
-  <div class="row" style="gap:8px;margin-top:12px"><div class="inp" style="flex:1;height:40px;font-size:12.5px;background:#fff">${I('link',16)}<b>pesitos.app/g/floripa</b></div><span class="chip" style="height:40px">${I('copy',15)}</span><span class="chip" style="height:40px">${I('mail',15)}</span></div>
- </div>
- <div class="btn" data-go="home" style="margin:auto 0 30px">Empezar a sumar</div>
-</div>`);
+ <div class="inp" style="margin-top:16px;height:44px">${I('search',18)}<input id="f-q" placeholder="Buscar por nombre" value="${esc(ST.form.q||'')}" data-live="q"></div>
+ <div style="margin-top:6px" id="flist">${ST.friends.filter(f=>f.n.toLowerCase().includes(q)).map(friendRow).join('')||'<div class="empty">No encontramos a nadie con ese nombre</div>'}</div>
+ <div class="small" style="font-size:12px;margin-top:4px">Si seguís a Mati, entrás directo a su grupo “Viaje a Floripa”.</div>
+ <div class="btn" data-act="finish" style="margin:auto 0 14px">Empezar a sumar</div>
+</div>`};
 
-const grp=(c,ini,n,pos,of,up)=>`<div data-go="group" class="row" style="gap:12px;padding:9px 0;border-top:1px solid var(--line)"><span class="av" style="background:${c};border-radius:12px">${ini}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${n}</div><div class="small" style="font-size:12px">${of} integrantes</div></div><div style="text-align:right"><div class="pts" style="font-size:20px;color:var(--brand)">${pos}º</div><div style="font-size:11px;font-weight:700;color:${up?'var(--green)':'var(--ink2)'}">${up?'▲ subiste':'= igual'}</div></div></div>`;
-const BAL=(n=ST.pts,label='Tenés',hint=true)=>`<div ${hint?'data-go="detail"':''} style="border-radius:24px;padding:18px 20px 16px;background:linear-gradient(135deg,var(--brand) 0%,var(--brand-d) 100%);color:#fff;position:relative;overflow:hidden">
+/* ---------- inicio ---------- */
+const BAL=()=>`<div data-go="detail" style="border-radius:24px;padding:18px 20px 16px;background:linear-gradient(135deg,var(--brand) 0%,var(--brand-d) 100%);color:#fff;position:relative;overflow:hidden">
  ${STAR(262,-10,70,15,'rgba(255,255,255,.12)')}${STAR(278,22,22,-8,'var(--gold)')}
- <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85">${label}</div>
- <div class="row" style="gap:10px;margin-top:4px"><span class="pts" style="font-size:58px;line-height:1">${n}</span><span class="logo" style="color:#fff;font-size:22px;margin-top:14px">PE<span style="color:var(--gold)">$</span>ITO<span style="color:var(--gold)">$</span></span></div>
- ${hint?`<div class="row" style="margin-top:10px;font-size:13px"><span style="background:rgba(255,255,255,.18);padding:4px 10px;border-radius:20px;font-weight:700">+${ST.week} esta semana</span><span class="sp"></span><span style="font-weight:700">Ver detalle</span>${I('chev',16)}</div>`:''}
+ <div style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Tenés</div>
+ <div class="row" style="gap:10px;margin-top:4px"><span class="pts" style="font-size:58px;line-height:1">${N(ST.pts)}</span><span class="logo" style="color:#fff;font-size:22px;margin-top:14px">PE<span style="color:var(--gold)">$</span>ITO<span style="color:var(--gold)">$</span></span></div>
+ <div class="row" style="margin-top:10px;font-size:13px"><span style="background:rgba(255,255,255,.18);padding:4px 10px;border-radius:20px;font-weight:700">+${N(weekPts())} esta semana</span><span class="sp"></span><span style="font-weight:700">Ver detalle</span>${I('chev',16)}</div>
 </div>`;
-S.home=()=>phone(`<div class="body">
- <div class="row" style="margin:2px 0 14px"><div><div class="small">Viernes 6 de noviembre</div><div class="t1">Hola, Sofi</div></div><span class="sp"></span><span style="position:relative">${I('bell',24)}<i style="position:absolute;right:1px;top:1px;width:8px;height:8px;border-radius:50%;background:var(--brand-l)"></i></span></div>
+const grpRow=g=>{const r=myRank(g),m=g.members.length;return`<div data-act="opengroup" data-id="${g.id}" class="li"><span class="av" style="background:${g.color};border-radius:12px">${esc(g.ini)}</span><div style="flex:1"><div class="tt">${esc(g.name)}</div><div class="small" style="font-size:12px">${m} integrantes${g.goal?` · ${Math.round(g.saved/g.goal*100)}% del objetivo`:''}</div></div><div style="text-align:right"><div class="pts" style="font-size:20px;color:var(--brand)">${r}º</div><div style="font-size:11px;font-weight:700;color:var(--gold-d)">${I('flame',11)} ${g.streak||0} días</div></div></div>`};
+const expRow=(e,del)=>`<div class="li"><span class="ibox">${I(catIco(e.cat),19)}</span><div style="flex:1;min-width:0"><div class="tt" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(e.note||e.cat)}</div><div class="small" style="font-size:12px">${e.cat} · ${ago(e.ts)}</div></div><b class="pts" style="font-size:16px">−${M(e.amt)}</b>${del?`<span class="x" data-act="delexp" data-id="${e.id}">${I('x',16)}</span>`:''}</div>`;
+const pauseLeft=p=>{const ms=p.until-now();if(ms<=0)return null;const h=Math.floor(ms/36e5),m=Math.floor(ms%36e5/6e4);return h?`quedan ${h} h ${m} min`:`quedan ${m} min`};
+const pauseRow=p=>{const l=pauseLeft(p);return`<div class="card row" data-hl="pausewin" style="gap:12px;padding:10px 14px;margin-top:8px">${I('bag',18,'color:var(--ink2)')}<div style="flex:1;font-size:13.5px"><b>${esc(p.item)}</b> · ${M(p.amt)}<div class="small" style="font-size:11.5px">${l?`Te avisamos ${fmtShort(p.until)} a las ${fmtHour(p.until)}`:'¡Ya pasaron las 24 h!'}</div></div>${l?`<span style="font-size:12px;font-weight:700;color:var(--gold-d);text-align:right">${l}</span>`:`<span class="chip on" data-act="decide" data-id="${p.id}">Decidir</span>`}</div>`};
+S.home=()=>{const u=ST.user,sp=spentMonth(),pct=Math.min(100,sp/u.budget*100),s=streakInfo(),c=ST.ch,cp=chProgress(),unread=ST.notifs.filter(n=>!n.read).length,pend=ST.pauses.filter(p=>p.status==='wait');
+ const left=u.budget-sp,ok=pct<=new Date(now()).getDate()/daysInMonth(now())*100+5;
+ return`<div class="body">
+ <div class="row" style="margin:2px 0 14px"><div><div class="small">${fmtDay(now())}</div><div class="t1">Hola, ${esc(meName())}</div></div><span class="sp"></span><span data-go="notifs" style="position:relative;padding:6px">${I('bell',24)}${unread?`<i style="position:absolute;right:2px;top:2px;min-width:16px;height:16px;border-radius:9px;background:var(--brand-l);color:#fff;font-size:10px;font-weight:700;font-style:normal;display:flex;align-items:center;justify-content:center;padding:0 4px">${unread}</i>`:''}</span></div>
  ${BAL()}
- <div class="card" style="margin-top:12px"><div class="row"><span class="lbl">Presupuesto de noviembre</span><span class="sp"></span><span style="font-weight:700;font-size:13px;color:var(--green)">Vas bien</span></div>
-  <div class="row" style="margin:6px 0 8px;font-size:14px"><b class="pts" style="font-size:19px">$ 6.200</b>&nbsp;gastados de $ 18.000</div><div class="bar"><i style="width:34%"></i></div>
-  <div class="small" style="margin-top:7px;font-size:12px">Te quedan $ 11.800 para 24 días · ≈ $ 490 por día</div></div>
- <div class="row" style="gap:8px;margin-top:10px">
-  <div class="card" style="flex:1;padding:11px 12px"><div class="row" style="gap:6px;color:var(--brand)">${I('flame',18)}<b class="pts" style="font-size:19px;color:var(--ink)">12 días</b></div><div class="small" style="font-size:11.5px">de racha registrando</div></div>
-  <div class="card" style="flex:1;padding:11px 12px"><div class="row" style="gap:6px;color:var(--brand)">${I('target',18)}<b class="pts" style="font-size:19px;color:var(--ink)">+40</b></div><div class="small" style="font-size:11.5px">Sin delivery hasta el viernes</div></div>
+ <div class="row" style="gap:8px;margin-top:12px">
+  <div class="qa" data-go="add" data-hl="add-qa"><span class="ibox">${I('pen',20)}</span>Registrar gasto</div>
+  <div class="qa" data-go="save"><span class="ibox">${I('piggy',20)}</span>Ahorrar</div>
+  <div class="qa" data-act="nospend"><span class="ibox" style="${ST.nospend.includes(today())?'background:var(--green-l);color:var(--green)':''}">${I(ST.nospend.includes(today())?'check':'sun',20)}</span>Hoy no gasté</div>
  </div>
- <div class="row" style="margin:10px 0 0"><span class="t2">Grupos</span><span class="sp"></span><span class="small" style="font-weight:700;color:var(--brand)">Ver todos</span></div>
- ${grp('#7C0A29','VF','Viaje a Floripa',2,5,true)}${grp('#E2365F','LL','Los del liceo',1,8,false)}
- <div data-go="impulse" style="margin-top:6px;margin-bottom:10px;height:42px;border-radius:16px;background:var(--ink);color:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font-weight:700;font-size:14.5px">${I('clock',19,'color:var(--gold)')}¿Lo compro?<span style="font-weight:500;font-size:12.5px;opacity:.7">Pensalo 24 h antes</span><span class="sp"></span>${I('chev',16)}</div>
-</div>`,{tab:'Inicio'});
+ ${u.logMode==='mail'?`<div class="card row" data-act="sync" style="gap:10px;margin-top:10px;padding:11px 14px">${I('mail',19,'color:var(--brand)')}<div style="flex:1;font-size:13.5px"><b>Avisos del banco</b><div class="small" style="font-size:11.5px">${ST.lastSync?'Última sincronización '+ago(ST.lastSync):'Traé tus compras con tarjeta'}</div></div><span class="chip">Sincronizar</span></div>`:''}
+ <div class="card" style="margin-top:10px" data-go="report"><div class="row"><span class="lbl">Presupuesto de ${monthName()}</span><span class="sp"></span><span style="font-weight:700;font-size:13px;color:${left<0?'var(--red)':ok?'var(--green)':'var(--gold-d)'}">${left<0?'Te pasaste':ok?'Vas bien':'Ojo'}</span></div>
+  <div class="row" style="margin:6px 0 8px;font-size:14px"><b class="pts" style="font-size:19px">${M(sp)}</b>&nbsp;gastados de ${M(u.budget)}</div><div class="bar"><i style="width:${pct}%;${left<0?'background:var(--red)':''}"></i></div>
+  <div class="small" style="margin-top:7px;font-size:12px">${left>=0?`Te quedan ${M(left)} · ≈ ${M(perDay())} por día hasta fin de mes`:`Te pasaste ${M(-left)} este mes`}</div></div>
+ <div class="row" style="gap:8px;margin-top:10px">
+  <div class="card" data-go="streaks" data-hl="streak" style="flex:1;padding:11px 12px"><div class="row" style="gap:6px;color:var(--brand)">${I('flame',18)}<b class="pts" style="font-size:19px;color:var(--ink)">${s.n} ${s.n===1?'día':'días'}</b></div><div class="small" style="font-size:11.5px">${s.todayDone?'de racha · hoy ✓':s.n?'¡registrá hoy para seguir!':'empezá tu racha hoy'}</div></div>
+  <div class="card" data-go="streaks" style="flex:1;padding:11px 12px"><div class="row" style="gap:6px;color:var(--brand)">${I('target',18)}<b class="pts" style="font-size:19px;color:var(--ink)">${c.status==='won'?'✓':'+'+c.pts}</b><span class="sp"></span><span style="font-size:10.5px;font-weight:700;color:var(--ink2)">día ${cp.day}/7</span></div><div class="small" style="font-size:11.5px">${c.t}${c.status==='won'?' · ¡cumplido!':cp.fail?' · perdido':''}</div></div>
+ </div>
+ ${pend.length?`<div class="row" style="margin:14px 0 0"><span class="t2">En pausa</span><span class="sp"></span><span class="small" style="font-weight:700;color:var(--brand)" data-go="impulse">Ver</span></div>${pend.map(pauseRow).join('')}`:''}
+ <div class="row" style="margin:14px 0 2px"><span class="t2">Grupos</span><span class="sp"></span><span class="small" style="font-weight:700;color:var(--brand)" data-go="groups">Ver todos</span></div>
+ ${ST.groups.length?ST.groups.map(grpRow).join(''):`<div class="card row" data-go="newgroup" style="gap:10px;margin-top:6px">${I('plus',19,'color:var(--brand)')}<span style="font-size:14px;font-weight:700">Creá tu primer grupo</span></div>`}
+ <div data-go="impulse" data-hl="impulse-bar" style="margin-top:10px;height:44px;border-radius:16px;background:var(--ink);color:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font-weight:700;font-size:14.5px">${I('clock',19,'color:var(--gold)')}¿Lo compro?<span style="font-weight:500;font-size:12.5px;opacity:.7">Pensalo 24 h antes</span><span class="sp"></span>${I('chev',16)}</div>
+ <div class="row" style="margin:14px 0 2px"><span class="t2">Últimos gastos</span><span class="sp"></span><span class="small" style="font-weight:700;color:var(--brand)" data-go="moves">Ver todos</span></div>
+ ${ST.expenses.slice(0,3).map(e=>expRow(e)).join('')||'<div class="empty">Todavía no registraste gastos. Tocá el + para empezar.</div>'}
+</div>`};
 
-const li=(n,t,s,ic)=>`<div class="row" style="gap:12px;padding:11px 0;border-top:1px solid var(--line)"><span style="width:38px;height:38px;border-radius:12px;background:var(--green-l);color:var(--green);display:flex;align-items:center;justify-content:center;flex:none">${I(ic,19)}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px;line-height:1.2">${t}</div><div class="small" style="font-size:12px;margin-top:2px">${s}</div></div><span class="plus" style="font-size:20px">+${n}</span></div>`;
-S.detail=()=>phone(`<div class="body">
- <div class="row" style="gap:10px;margin:4px 0 14px"><span data-go="home" style="display:flex">${I('back',22)}</span><span class="t2" style="font-size:18px">Tus pe$itos</span></div>
- ${BAL(200,'Total de noviembre',false)}
- <div class="lbl" style="margin:16px 0 4px">Cómo los ganaste</div>
- ${li(20,'Ahorro del mes pasado','Guardaste $ 3.900 en octubre','piggy')}
- ${li(50,'Cumpliste el presupuesto','Octubre cerró en $ 17.300 de $ 18.000','target')}
- ${li(30,'Registro de gastos','30 días sin saltearte uno','pen')}
- ${li(50,'Evitaste una compra impulsiva','Usaste ¿Lo compro? y esperaste 24 h','clock')}
- ${ST.waited?li(50,'Pausa de impulso de hoy','No compraste la campera de jean','clock'):''}${li(50,'Ahorraste el 15% del sueldo','Meta de ahorro cumplida','trophy')}
- <div class="card row" style="gap:10px;margin-top:8px;background:var(--blush);border:none;padding:11px 14px">${I('bolt',19,'color:var(--brand)')}<div class="small" style="font-size:12.5px;color:var(--ink)"><b>Te faltan 40</b> para el 2x1 en el cine</div></div>
-</div>`,{tab:'Inicio'});
+/* ---------- registrar gasto ---------- */
+S.add=()=>{const f=ST.form,cat=f.cat||'Café',s=streakInfo(),first=!ST.closed['reg-'+today()];return`<div class="body" style="display:flex;flex-direction:column">
+ ${back('home','Registrar gasto')}
+ <div class="card" style="padding:16px"><div class="lbl">¿Cuánto gastaste?</div><div class="inp big" style="border:0;padding:0;height:56px">$<input id="a-amt" inputmode="numeric" placeholder="0" value="${esc(f.amt||'')}" autofocus></div></div>
+ <div class="lbl" style="margin:16px 0 8px">Categoría</div>
+ <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">${CATS.map(([t,ic])=>`<div data-act="acat" data-v="${t}" style="text-align:center"><div style="height:54px;border-radius:16px;background:${cat===t?'var(--brand)':'#fff'};color:${cat===t?'#fff':'var(--brand)'};border:1.5px solid ${cat===t?'var(--brand)':'var(--line)'};display:flex;align-items:center;justify-content:center">${I(ic,24)}</div><div style="font-size:11.5px;font-weight:700;margin-top:5px">${t}</div></div>`).join('')}</div>
+ <div class="lbl" style="margin:16px 0 8px">Detalle (opcional)</div>
+ <div class="inp" style="height:46px">${I('pen',17)}<input id="a-note" placeholder="Ej: café con Juli" value="${esc(f.note||'')}"></div>
+ <div class="chips" style="margin-top:10px">${[['0','Hoy'],['-1','Ayer']].map(([v,t])=>`<span class="chip ${String(f.day||'0')===v?'on':''}" data-act="aday" data-v="${v}">${t}</span>`).join('')}</div>
+ <div style="margin-top:auto;padding-top:18px">
+  ${first?`<div class="row small" style="gap:8px;margin-bottom:10px;font-size:12.5px;color:var(--ink)">${I('flame',17,'color:var(--brand)')}<span>${s.n?`Registrando hoy llegás a <b>${s.n+(s.todayDone?0:1)} días de racha</b>`:'Registrando hoy empezás tu racha'}</span></div>`:''}
+  <div class="btn" data-act="addexp" data-hl="add">Registrar ${first&&String(f.day||'0')==='0'?`· ganá <span class="pts">+10</span>${COIN(18)}`:''}</div>
+ </div>
+</div>`};
+S.moves=()=>{const list=ST.expenses;return`<div class="body">${back('home','Tus gastos',`<span class="chip on" data-go="add">${I('plus',14)}Nuevo</span>`)}
+ <div class="card row" style="gap:10px;padding:12px 14px"><div style="flex:1"><div class="lbl">Este mes</div><div class="pts" style="font-size:22px">${M(spentMonth())}</div></div><div style="text-align:right"><div class="lbl">Gastos</div><div class="pts" style="font-size:22px">${monthExp().length}</div></div></div>
+ <div style="margin-top:8px">${list.map(e=>expRow(e,true)).join('')||'<div class="empty">Sin gastos registrados</div>'}</div></div>`};
 
-S.impulse=()=>phone(`<div class="body" style="display:flex;flex-direction:column">
- <div class="row" style="gap:10px;margin:4px 0 12px"><span data-go="home" style="display:flex">${I('back',22)}</span><span class="lbl" style="color:var(--brand)">Pausa de 24 h</span></div>
+/* ---------- ahorrar ---------- */
+S.save=()=>{const f=ST.form,dest=f.dest??(ST.groups.find(g=>g.goal)?.id||'me'),g=saveGoal(),sm=savedMonth();return`<div class="body" style="display:flex;flex-direction:column">
+ ${back('home','Ahorrar')}
+ <div class="card" style="background:var(--ink);color:#fff;border:none"><div class="lbl" style="color:var(--gold)">Meta de ahorro de ${monthName()}</div>
+  <div class="row" style="margin-top:6px"><b class="pts" style="font-size:26px">${M(sm)}</b><span style="opacity:.7;font-size:13px;margin:6px 0 0 6px">de ${M(g)} (${ST.user.savePct}%)</span></div>
+  <div class="bar" style="margin-top:10px;background:rgba(255,255,255,.15)"><i style="width:${g?Math.min(100,sm/g*100):0}%;background:var(--gold)"></i></div>
+  <div class="small" style="color:#fff;opacity:.75;margin-top:8px;font-size:12px">${sm>=g?'¡Meta cumplida este mes!':'Si llegás a la meta ganás +50 extra'}</div></div>
+ <div class="card" style="margin-top:12px;padding:16px"><div class="lbl">¿Cuánto guardaste?</div><div class="inp big" style="border:0;padding:0;height:56px">$<input id="s-amt" inputmode="numeric" placeholder="0" value="${esc(f.amt||'')}"></div>
+  <div class="chips" style="margin-top:4px">${[500,1000,2000].map(v=>`<span class="chip" data-act="squick" data-v="${v}">${M(v)}</span>`).join('')}</div></div>
+ <div class="lbl" style="margin:16px 0 8px">¿Para qué?</div>
+ <div style="display:flex;flex-direction:column;gap:8px">
+  ${opt('piggy','Mi ahorro','Plata que guardás para vos',dest==='me','sdest','me')}
+  ${ST.groups.filter(x=>x.goal).map(x=>opt('users',esc(x.name),`Objetivo del grupo · ${M(x.saved)} de ${M(x.goal)}`,dest===x.id,'sdest',x.id)).join('')}
+ </div>
+ <div class="small" style="margin:12px 0 0;font-size:12px">Ganás 1 pe$ito cada $ 100 que ahorrás (mínimo 5).</div>
+ <div class="btn" data-act="dosave" data-hl="save" style="margin:auto 0 0;margin-top:16px">Guardar ahorro</div>
+</div>`};
+
+/* ---------- detalle de pe$itos ---------- */
+const ledRow=x=>`<div class="li"><span class="ibox" style="${x.pts>0?'background:var(--green-l);color:var(--green)':''}">${I(x.ic||'spark',19)}</span><div style="flex:1;min-width:0"><div class="tt">${esc(x.t)}</div><div class="small" style="font-size:12px;margin-top:2px">${esc(x.sub||'')} · ${ago(x.ts)}</div></div><span class="${x.pts>0?'plus':'minus'}" style="font-size:19px">${x.pts>0?'+':'−'}${Math.abs(x.pts)}</span></div>`;
+S.detail=()=>{const next=REWARDS.filter(r=>r.p>ST.pts).sort((a,b)=>a.p-b.p)[0];return`<div class="body">
+ ${back('home','Tus pe$itos')}
+ <div style="border-radius:24px;padding:18px 20px;background:linear-gradient(135deg,var(--brand),var(--brand-d));color:#fff;position:relative;overflow:hidden">${STAR(262,-10,70,15,'rgba(255,255,255,.12)')}
+  <div class="row"><div><div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Disponibles</div><div class="pts" style="font-size:46px;line-height:1.05">${N(ST.pts)}</div></div><span class="sp"></span><div style="text-align:right"><div style="font-size:12px;opacity:.85">Ganados en ${monthName()}</div><div class="pts" style="font-size:24px">+${N(monthPts())}</div></div></div></div>
+ ${next?`<div class="card row" data-go="rewards" style="gap:10px;margin-top:10px;background:var(--blush);border:none;padding:11px 14px">${I('bolt',19,'color:var(--brand)')}<div class="small" style="font-size:12.5px;color:var(--ink)"><b>Te faltan ${next.p-ST.pts}</b> para ${next.t.toLowerCase()}</div></div>`:''}
+ <div class="lbl" style="margin:16px 0 6px">Cómo se suman</div>
+ <div class="card" style="padding:4px 14px">${[['pen','Registrar tus gastos del día','+10'],['flame','Rachas de 3, 7, 14, 21 y 30 días','+20 a +200'],['piggy','Ahorrar (cada $ 100)','+1'],['clock','Esperar 24 h y no comprar','+50'],['target','Desafío semanal','+40'],['sun','Cerrar el día dentro del presupuesto','+5']].map(([ic,t,p],i)=>`<div class="row" style="gap:10px;padding:9px 0;${i?'border-top:1px solid var(--line)':''}">${I(ic,17,'color:var(--brand)')}<span style="flex:1;font-size:13px">${t}</span><b class="plus" style="font-size:14px">${p}</b></div>`).join('')}</div>
+ <div class="lbl" style="margin:16px 0 4px">Historial</div>
+ ${ST.ledger.map(ledRow).join('')||'<div class="empty">Todavía no hay movimientos</div>'}
+</div>`};
+
+/* ---------- rachas ---------- */
+S.streaks=()=>{const s=streakInfo(),set=logSet(),t=today(),c=ST.ch,cp=chProgress();const days=[];for(let i=13;i>=0;i--)days.push(kAdd(t,-i));
+ const nm=MILESTONES.find(([m])=>m>s.n);
+ const sc=(ic,n,t2,sub,col)=>`<div class="card" style="padding:12px"><div class="row" style="gap:6px;color:${col}">${I(ic,18)}<b class="pts" style="font-size:22px;color:var(--ink)">${n}</b></div><div style="font-size:12.5px;font-weight:700;margin-top:2px">${t2}</div><div class="small" style="font-size:11px">${sub}</div></div>`;
+ return`<div class="body">${back('home','Tus rachas')}
+ <div data-hl="streak" style="border-radius:24px;padding:18px 20px;background:var(--ink);color:#fff;position:relative;overflow:hidden">${STAR(250,-14,80,10,'rgba(255,255,255,.08)')}
+  <div class="row" style="gap:10px">${I('flame',34,'color:var(--gold)')}<div><div class="pts" style="font-size:40px;line-height:1">${s.n} ${s.n===1?'día':'días'}</div><div style="font-size:13px;opacity:.8">registrando tus gastos · récord ${Math.max(ST.best||0,s.n)}</div></div></div>
+  ${nm?`<div style="margin-top:12px;font-size:13px">Próximo premio: <b>${nm[0]} días → +${nm[1]}</b></div><div class="bar" style="margin-top:8px;background:rgba(255,255,255,.15)"><i style="width:${s.n/nm[0]*100}%;background:var(--gold)"></i></div>`:''}
+  ${!s.todayDone?`<div class="btn" data-go="add" style="margin-top:14px;height:42px;background:var(--gold);color:var(--ink)">Registrar hoy y sumar un día</div>`:''}</div>
+ <div class="lbl" style="margin:16px 0 0">Últimos 14 días</div>
+ <div class="cal">${days.map(k=>`<div class="${set.has(k)?'on':''} ${k===t?'td':''}">${kDate(k).getDate()}</div>`).join('')}</div>
+ <div class="lbl" style="margin:16px 0 8px">Más rachas</div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  ${sc('target',budgetStreak(),'Días en presupuesto','sin pasarte del gasto diario','var(--green)')}
+  ${sc('piggy',saveStreak(),saveStreak()===1?'Semana ahorrando':'Semanas ahorrando','al menos un ahorro por semana','var(--gold-d)')}
+  ${ST.groups.slice(0,2).map(g=>sc('users',g.streak||0,'Racha de '+esc(g.name),'días seguidos sumando en grupo','var(--brand)')).join('')}
+ </div>
+ <div class="lbl" style="margin:16px 0 8px">Desafío de la semana</div>
+ <div class="card"><div class="row" style="gap:10px">${I('target',20,'color:var(--brand)')}<div style="flex:1"><div style="font-weight:700;font-size:14.5px">${c.t}</div><div class="small" style="font-size:12px">${c.s} · ${cp.txt}</div></div><b class="plus">+${c.pts}</b></div>
+  <div class="bar" style="margin-top:10px"><i style="width:${cp.day/7*100}%;${cp.fail?'background:#ccc':''}"></i></div>
+  <div class="small" style="font-size:11.5px;margin-top:6px">${c.status==='won'?'¡Cumplido! Ya sumaste los pe$itos.':cp.fail?'Esta vez no salió. La semana que viene hay otro.':`Día ${cp.day} de 7 · termina el ${fmtShort(kDate(c.end))}`}</div></div>
+ <div class="lbl" style="margin:16px 0 8px">Premios por racha</div>
+ <div class="row" style="gap:6px">${MILESTONES.map(([m,p])=>`<div style="flex:1;text-align:center;opacity:${s.n>=m?1:.4}"><div style="width:46px;height:46px;margin:0 auto;border-radius:50%;background:${s.n>=m?'var(--brand)':'#fff'};border:2px solid var(--brand);color:${s.n>=m?'#fff':'var(--brand)'};display:flex;align-items:center;justify-content:center" class="pts">${m}</div><div style="font-size:11px;font-weight:700;margin-top:4px">+${p}</div></div>`).join('')}</div>
+</div>`};
+
+/* ---------- ¿Lo compro? ---------- */
+function impulseInsight(){const f=ST.form,amt=+String(f.amt||'').replace(/\D/g,'')||0,cat=f.cat2||'Ropa',n=monthExp().filter(e=>e.cat===cat).length+1,pct=Math.round((spentMonth()+amt)/ST.user.budget*100),days=perDay()?Math.round(amt/perDay()*10)/10:0;
+ return`<div class="row" style="gap:10px;font-size:13.5px">${I('chart',18,'color:var(--brand)')}<span>Sería tu <b>${n}º gasto en ${cat}</b> este mes</span></div>
+  <div class="row" style="gap:10px;font-size:13.5px;margin-top:9px">${I('piggy',18,'color:var(--brand)')}<span>Llegarías al <b style="color:${pct>100?'var(--red)':'inherit'}">${pct}%</b> del presupuesto${amt&&days?` · <b>${String(days).replace('.',',')} días</b> de tu gasto diario`:''}</span></div>
+  <div class="bar" style="margin-top:9px;background:#fff"><i style="width:${Math.min(100,pct)}%;${pct>100?'background:var(--red)':''}"></i></div>`}
+S.impulse=()=>{const f=ST.form,cat=f.cat2||'Ropa',pend=ST.pauses.filter(p=>p.status==='wait'),hist=ST.pauses.filter(p=>p.status!=='wait').slice(0,4);return`<div class="body" style="display:flex;flex-direction:column">
+ ${back('home','<span class="lbl" style="color:var(--brand)">Pausa de 24 h</span>')}
  <div class="t1" style="font-size:30px">¿Lo compro?</div>
  <div class="small" style="font-size:13.5px;margin-top:4px;line-height:1.4">Antes de comprar algo que no tenías planeado, anotalo acá.</div>
  <div class="lbl" style="margin:16px 0 6px">¿Qué querés comprar?</div>
- <div class="inp" style="height:46px">${I('bag',18)}<b>Campera de jean</b></div>
- <div class="row" style="gap:8px;margin-top:8px"><div class="inp" style="height:46px;width:120px"><b class="pts" style="font-size:17px">$ 2.400</b></div>
-  <div style="display:flex;gap:6px;flex:1"><span class="chip on">Ropa</span><span class="chip">Salidas</span><span class="chip">Otro</span></div></div>
- <div class="card" style="margin-top:12px;background:var(--blush);border:none;padding:13px 15px">
-  <div class="row" style="gap:10px;font-size:13.5px">${I('chart',18,'color:var(--brand)')}<span>Sería tu <b>3er gasto en Ropa</b> este mes</span></div>
-  <div class="row" style="gap:10px;font-size:13.5px;margin-top:9px">${I('piggy',18,'color:var(--brand)')}<span>Llegarías al <b>48%</b> del presupuesto</span></div>
-  <div class="bar" style="margin-top:9px;background:#fff"><i style="width:34%"></i></div>
+ <div class="inp" style="height:46px">${I('bag',18)}<input id="i-item" placeholder="Ej: campera de jean" value="${esc(f.item||'')}"></div>
+ <div class="row" style="gap:8px;margin-top:8px"><div class="inp" style="height:46px;width:130px">$<input id="i-amt" inputmode="numeric" placeholder="0" value="${esc(f.amt||'')}" data-live="insight"></div>
+  <div class="chips" style="flex:1;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none">${['Ropa','Salidas','Delivery','Otro'].map(c=>`<span class="chip ${cat===c?'on':''}" data-act="icat" data-v="${c}">${c}</span>`).join('')}</div></div>
+ <div class="card" id="insight" style="margin-top:12px;background:var(--blush);border:none;padding:13px 15px">${impulseInsight()}</div>
+ <div class="row" style="gap:10px;margin-top:12px;font-size:13px;color:var(--ink2)">${I('clock',18,'color:var(--brand)')}<span>Te avisamos <b style="color:var(--ink)">${fmtShort(now()+DAY)} a las ${fmtHour(now()+DAY)}</b> para ver si todavía lo querés.</span></div>
+ <div style="margin-top:16px">
+  <div class="btn" data-act="wait" data-hl="pause">Esperar 24 h · ganá <span class="pts">+50</span>${COIN(18)}</div>
+  <div data-act="buynow" style="text-align:center;margin-top:12px;font-weight:700;font-size:14px;color:var(--ink2)">Lo necesito, comprar igual</div>
  </div>
- <div class="row" style="gap:10px;margin-top:12px;font-size:13px;color:var(--ink2)">${I('clock',18,'color:var(--brand)')}<span>Te avisamos <b style="color:var(--ink)">mañana a las 21:47</b> para ver si todavía la querés.</span></div>
- <div class="lbl" style="margin:16px 0 6px">En pausa</div>
- <div class="card row" style="gap:12px;padding:10px 14px">${I('bag',18,'color:var(--ink2)')}<div style="flex:1;font-size:13.5px"><b>Auriculares</b> · $ 1.900</div><span style="font-size:12px;font-weight:700;color:var(--gold-d)">quedan 6 h</span></div>
- <div style="margin-top:auto;margin-bottom:22px">
-  <div class="btn" data-act="wait">Esperar 24 h · ganá <span class="pts">+50</span>${COIN(18)}</div>
-  <div data-act="buy" style="text-align:center;margin-top:12px;font-weight:700;font-size:14px;color:var(--ink2)">Lo necesito, comprar igual</div>
- </div>
-</div>`);
-const cat=(ic,t,_o,on=ST.cat===t)=>`<div data-act="cat" data-cat="${t}" style="flex:1;text-align:center"><div style="height:66px;border-radius:18px;background:${on?'var(--brand)':'#fff'};color:${on?'#fff':'var(--brand)'};border:1.5px solid ${on?'var(--brand)':'var(--line)'};display:flex;align-items:center;justify-content:center">${I(ic,28)}</div><div style="font-size:12px;font-weight:700;margin-top:6px">${t}</div></div>`;
-const rew=(ic,t,s,p,_o,_p,ok=p<=ST.pts,pct=Math.min(100,Math.round(ST.pts/p*100)))=>`<div ${ok?`data-act="redeem" data-cost="${p}" data-name="${t}" data-place="${s}"`:''} class="row" style="gap:12px;padding:11px 0;border-top:1px solid var(--line)"><span style="width:46px;height:46px;border-radius:14px;background:var(--blush);color:var(--brand);display:flex;align-items:center;justify-content:center;flex:none">${I(ic,22)}</span><div style="flex:1"><div style="font-weight:700;font-size:14.5px">${t}</div><div class="small" style="font-size:12px">${s}</div>${ok?'':`<div class="bar" style="height:5px;margin-top:6px;width:120px"><i style="width:${pct}%;background:var(--gold)"></i></div>`}</div><div style="text-align:right"><div class="row" style="gap:4px;justify-content:flex-end"><b class="pts" style="font-size:17px">${p}</b>${COIN(15)}</div><div style="font-size:11px;font-weight:700;color:${ok?'var(--green)':'var(--gold-d)'}">${ok?'Te alcanza':'Te faltan '+(p-ST.pts)}</div></div></div>`;
-S.rewards=()=>phone(`<div class="body">
- <div class="row" style="margin:4px 0 14px"><span class="t1">Canjes</span><span class="sp"></span><span class="chip" style="height:34px;gap:6px;border-color:var(--gold);background:#FFF6E0">${COIN(17)}<b class="pts" style="font-size:16px">${ST.pts}</b></span></div>
- <div style="display:flex;gap:9px">${cat('coffee','Comida',true)}${cat('shirt','Moda')}${cat('plane','Viajes')}${cat('ticket','Experiencias')}</div>
- <div style="margin-top:16px;border-radius:22px;background:var(--ink);color:#fff;padding:16px 18px;position:relative;overflow:hidden">
-  ${STAR(250,-14,80,10,'rgba(255,255,255,.08)')}
+ ${pend.length?`<div class="lbl" style="margin:20px 0 0">En pausa</div>${pend.map(pauseRow).join('')}`:''}
+ ${hist.length?`<div class="lbl" style="margin:18px 0 4px">Decisiones anteriores</div>${hist.map(p=>`<div class="li">${I(p.status==='won'?'check':'bag',18,`color:${p.status==='won'?'var(--green)':'var(--ink2)'}`)}<div style="flex:1;font-size:13.5px"><b>${esc(p.item)}</b> · ${M(p.amt)}</div><span class="small" style="font-weight:700;color:${p.status==='won'?'var(--green)':'var(--ink2)'}">${p.status==='won'?'No la compraste · +50':'La compraste'}</span></div>`).join('')}`:''}
+</div>`};
+
+/* ---------- canjes ---------- */
+const rewRow=r=>{const ok=r.p<=ST.pts,pct=Math.min(100,Math.round(ST.pts/r.p*100));return`<div ${ok?`data-act="askredeem" data-id="${r.id}"`:''} class="li"><span class="ibox" style="width:46px;height:46px;border-radius:14px">${I(r.ic,22)}</span><div style="flex:1"><div class="tt">${r.t}</div><div class="small" style="font-size:12px">${r.s}</div>${ok?'':`<div class="bar" style="height:5px;margin-top:6px;width:120px"><i style="width:${pct}%;background:var(--gold)"></i></div>`}</div><div style="text-align:right"><div class="row" style="gap:4px;justify-content:flex-end"><b class="pts" style="font-size:17px">${r.p}</b>${COIN(15)}</div><div style="font-size:11px;font-weight:700;color:${ok?'var(--green)':'var(--gold-d)'}">${ok?'Canjear':'Te faltan '+(r.p-ST.pts)}</div></div></div>`};
+const gRewRow=(r,g)=>{const ok=r.p<=g.pool;return`<div ${ok?`data-act="askgredeem" data-id="${r.id}" data-g="${g.id}"`:''} data-hl="g-${r.id}" class="li"><span class="ibox" style="width:46px;height:46px;border-radius:14px;background:var(--ink);color:var(--gold)">${I(r.ic,22)}</span><div style="flex:1"><div class="tt">${r.t} ${g.members.length}</div><div class="small" style="font-size:12px">${r.s}</div>${ok?'':`<div class="bar" style="height:5px;margin-top:6px;width:120px"><i style="width:${Math.min(100,g.pool/r.p*100)}%;background:var(--gold)"></i></div>`}</div><div style="text-align:right"><div class="row" style="gap:4px;justify-content:flex-end"><b class="pts" style="font-size:17px">${r.p}</b>${COIN(15)}</div><div style="font-size:11px;font-weight:700;color:${ok?'var(--green)':'var(--gold-d)'}">${ok?'Canjear en grupo':'Faltan '+(r.p-g.pool)}</div></div></div>`};
+S.rewards=()=>{const cat=ST.cat,feat=REWARDS.find(r=>r.feat);const gsel=grp(ST.gid)||ST.groups[0];return`<div class="body">
+ <div class="row" style="margin:4px 0 14px"><span class="t1">Canjes</span><span class="sp"></span><span class="chip" data-go="myredeems" style="height:34px;gap:6px">Mis canjes</span><span class="chip" style="height:34px;gap:6px;border-color:var(--gold);background:#FFF6E0;margin-left:6px">${COIN(17)}<b class="pts" style="font-size:16px">${N(ST.pts)}</b></span></div>
+ <div style="display:flex;gap:7px">${[['Comida','coffee'],['Moda','shirt'],['Viajes','plane'],['Experiencias','ticket'],['Grupos','users']].map(([t,ic])=>`<div data-act="rcat" data-v="${t}" style="flex:1;text-align:center"><div style="height:58px;border-radius:17px;background:${cat===t?'var(--brand)':'#fff'};color:${cat===t?'#fff':'var(--brand)'};border:1.5px solid ${cat===t?'var(--brand)':'var(--line)'};display:flex;align-items:center;justify-content:center">${I(ic,25)}</div><div style="font-size:11px;font-weight:700;margin-top:6px">${t==='Experiencias'?'Experien.':t}</div></div>`).join('')}</div>
+ ${cat==='Grupos'?(gsel?`
+  <div style="margin-top:16px;border-radius:22px;background:var(--ink);color:#fff;padding:16px 18px;position:relative;overflow:hidden">${STAR(250,-14,80,10,'rgba(255,255,255,.08)')}
+   <div class="lbl" style="color:var(--gold)">Pozo del grupo</div>
+   <div class="row" style="gap:8px;margin-top:6px"><b class="pts" style="font-size:32px">${N(gsel.pool)}</b>${COIN(20)}<span class="sp"></span><span style="font-size:12.5px;opacity:.75;text-align:right">Todo lo que suman<br>los ${gsel.members.length} va al pozo</span></div></div>
+  ${ST.groups.length>1?`<div class="chips" style="margin-top:12px">${ST.groups.map(g=>`<span class="chip ${g.id===gsel.id?'on':''}" data-act="rgsel" data-v="${g.id}">${esc(g.name)}</span>`).join('')}</div>`:''}
+  <div class="lbl" style="margin:16px 0 2px">Canjes para todo el grupo</div>${GREWARDS.map(r=>gRewRow(r,gsel)).join('')}`:`<div class="empty">Sumate a un grupo para desbloquear canjes grupales.<div class="btn" data-go="newgroup" style="margin-top:12px">Crear grupo</div></div>`):`
+ ${cat==='Comida'?`<div style="margin-top:16px;border-radius:22px;background:var(--ink);color:#fff;padding:16px 18px;position:relative;overflow:hidden">${STAR(250,-14,80,10,'rgba(255,255,255,.08)')}
   <div class="lbl" style="color:var(--gold)">Destacado de la semana</div>
-  <div class="row" style="gap:14px;margin-top:10px"><span style="width:58px;height:58px;border-radius:18px;background:var(--gold);color:#5a3a00;display:flex;align-items:center;justify-content:center;flex:none">${I('coffee',30)}</span><div style="flex:1"><div class="t2" style="font-size:18px">Café + medialuna</div><div style="font-size:12.5px;opacity:.75">Café Amapola · Pocitos</div></div></div>
-  <div class="row" style="margin-top:14px"><div class="row" style="gap:6px"><b class="pts" style="font-size:24px">60</b>${COIN(18)}</div><span class="sp"></span><span data-act="redeem" data-cost="60" data-name="Café + medialuna" data-place="Café Amapola" style="background:#fff;color:var(--ink);font-weight:700;font-size:14px;padding:9px 18px;border-radius:14px">Canjear</span></div>
- </div>
- <div class="lbl" style="margin:16px 0 2px">Cerca tuyo</div>
- ${rew('coffee','Desayuno para dos','La Panadería del Barrio',140,true)}
- ${rew('ticket','2x1 en el cine','Cualquier función',240,false,83)}
- ${rew('spark','Clase de surf','Experiencias · La Barra',400,false,50)}
-</div>`,{tab:'Canjes'});
-
-function qr(){let s=7,o='';const r=()=>{s=(s*9301+49297)%233280;return s/233280};const n=21,c=8;
- const fin=(x,y)=>(x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13);
- for(let y=0;y<n;y++)for(let x=0;x<n;x++){let on;
-  if(fin(x,y)){const fx=x>13?x-14:x,fy=y>13?y-14:y;on=(fx==0||fx==6||fy==0||fy==6)||(fx>1&&fx<5&&fy>1&&fy<5)}else on=r()>.52;
-  if(on)o+=`<rect x="${x*c}" y="${y*c}" width="${c}" height="${c}"/>`}
- return `<svg width="168" height="168" viewBox="0 0 168 168" fill="var(--ink)">${o}</svg>`}
-S.redeem=()=>phone(`<div class="body" style="display:flex;flex-direction:column;align-items:center;text-align:center">
+  <div class="row" style="gap:14px;margin-top:10px"><span style="width:58px;height:58px;border-radius:18px;background:var(--gold);color:#5a3a00;display:flex;align-items:center;justify-content:center;flex:none">${I('coffee',30)}</span><div style="flex:1"><div class="t2" style="font-size:18px">${feat.t}</div><div style="font-size:12.5px;opacity:.75">${feat.s}</div></div></div>
+  <div class="row" style="margin-top:14px"><div class="row" style="gap:6px"><b class="pts" style="font-size:24px">${feat.p}</b>${COIN(18)}</div><span class="sp"></span><span ${feat.p<=ST.pts?`data-act="askredeem" data-id="${feat.id}"`:''} data-hl="redeem" style="background:${feat.p<=ST.pts?'#fff':'rgba(255,255,255,.2)'};color:${feat.p<=ST.pts?'var(--ink)':'#fff'};font-weight:700;font-size:14px;padding:9px 18px;border-radius:14px">${feat.p<=ST.pts?'Canjear':'Te faltan '+(feat.p-ST.pts)}</span></div></div>`:''}
+ <div class="lbl" style="margin:16px 0 2px">${cat}</div>
+ ${REWARDS.filter(r=>r.cat===cat&&!r.feat).map(rewRow).join('')}`}
+</div>`};
+function qrSvg(text){try{const q=qrcode(0,'M');q.addData(text);q.make();return q.createSvgTag({cellSize:5,margin:0,scalable:true})}catch(e){return `<div style="width:168px;height:168px;display:flex;align-items:center;justify-content:center;background:var(--blush);border-radius:12px" class="pts">${esc(text)}</div>`}}
+S.redeem=()=>{const r=ST.redeems.find(x=>x.id===ST.rid)||ST.redeems[0];return`<div class="body" style="display:flex;flex-direction:column;align-items:center;text-align:center">
  ${STAR(30,30,30,-12,'var(--gold)')}${STAR(290,70,40,14)}${STAR(270,20,18,0,'var(--brand-l)')}
- <div style="margin-top:42px;width:70px;height:70px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center">${I('check',38,'stroke-width:2.6')}</div>
- <div class="t1" style="margin-top:16px;font-size:28px">¡Te lo ganaste!</div>
- <div style="font-size:15px;color:var(--ink2);margin-top:6px">Canjeaste <b style="color:var(--ink)">${ST.last.name}</b><br>en ${ST.last.place}</div>
- <div class="card" style="margin-top:22px;padding:18px;border-radius:24px;box-shadow:0 14px 30px -18px rgba(124,10,41,.35)">${qr()}
-  <div class="pts" style="font-size:22px;letter-spacing:.12em;margin-top:10px">PES-4821</div><div class="small" style="font-size:12px">Mostralo en caja · vence el 13/11</div></div>
- <div class="row" style="gap:8px;margin-top:18px;font-size:14px"><span>Te quedan</span><b class="pts" style="font-size:18px">${ST.pts}</b>${COIN(16)}</div>
- <div style="width:100%;margin-top:auto;margin-bottom:30px;display:flex;flex-direction:column;gap:10px"><div class="btn" data-act="share">Compartir con el grupo</div><div data-go="rewards" style="font-weight:700;font-size:14px;color:var(--ink2);padding:6px">Volver a canjes</div></div>
-</div>`);
+ <div style="margin-top:30px;width:70px;height:70px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center">${I('check',38,'stroke-width:2.6')}</div>
+ <div class="t1" style="margin-top:14px;font-size:28px">${r.group?'¡Se lo ganaron!':'¡Te lo ganaste!'}</div>
+ <div style="font-size:15px;color:var(--ink2);margin-top:6px">${r.group?'El grupo canjeó':'Canjeaste'} <b style="color:var(--ink)">${esc(r.name)}</b><br>en ${esc(r.place)}</div>
+ <div class="card" style="margin-top:18px;padding:18px;border-radius:24px;box-shadow:0 14px 30px -18px rgba(124,10,41,.35)"><div style="width:168px;height:168px;margin:0 auto">${qrSvg('PESITOS|'+r.code+'|'+r.name)}</div>
+  <div class="pts" style="font-size:22px;letter-spacing:.12em;margin-top:10px">${r.code}</div><div class="small" style="font-size:12px">Mostralo en caja · vence el ${fmtShort(r.exp)}</div></div>
+ <div class="row" style="gap:8px;margin-top:14px;font-size:14px"><span>${r.group?'Quedan en el pozo':'Te quedan'}</span><b class="pts" style="font-size:18px">${N(r.group?(grp(r.group)?.pool||0):ST.pts)}</b>${COIN(16)}</div>
+ <div style="width:100%;margin-top:auto;padding-top:16px;display:flex;flex-direction:column;gap:10px">${r.group?`<div class="btn" data-act="opengroup" data-id="${r.group}">Volver al grupo</div>`:`<div class="btn" data-act="share" data-id="${r.id}">${I('share',18)}Compartir con el grupo</div>`}<div data-go="rewards" style="font-weight:700;font-size:14px;color:var(--ink2);padding:6px">Volver a canjes</div></div>
+</div>`};
+S.myredeems=()=>`<div class="body">${back('rewards','Mis canjes')}
+ ${ST.redeems.map(r=>`<div class="li" data-act="openredeem" data-id="${r.id}"><span class="ibox" style="${r.group?'background:var(--ink);color:var(--gold)':''}">${I(r.group?'users':'gift',19)}</span><div style="flex:1"><div class="tt">${esc(r.name)}</div><div class="small" style="font-size:12px">${esc(r.place)} · ${r.code}</div></div><div style="text-align:right"><div class="minus">−${r.cost}</div><div style="font-size:11px;font-weight:700;color:${r.used||r.exp<now()?'var(--ink2)':'var(--green)'}">${r.used?'Usado':r.exp<now()?'Vencido':'Vigente'}</div></div></div>`).join('')||'<div class="empty">Todavía no canjeaste nada</div>'}</div>`;
 
-const rk=(p,c,ini,n,pts,me)=>`<div class="row" style="gap:12px;padding:9px 12px;border-radius:14px;${me?'background:var(--blush);':''}"><b class="pts" style="width:18px;font-size:17px;color:${p==1?'var(--gold-d)':'var(--ink2)'}">${p}</b><span class="av" style="background:${c};width:34px;height:34px;font-size:13px">${ini}</span><div style="flex:1;font-weight:700;font-size:14.5px">${n}${me?' <span class="small" style="font-weight:500">(vos)</span>':''}</div><b class="pts" style="font-size:16px">${pts}</b>${COIN(14)}</div>`;
-S.group=()=>phone(`<div class="body">
- <div class="row" style="gap:10px;margin:4px 0 14px"><span data-go="home" style="display:flex">${I('back',22)}</span><span class="t2" style="font-size:18px">Viaje a Floripa</span><span class="sp"></span><span class="chip" style="height:32px">${I('link',15)}Invitar</span></div>
- <div class="card" style="background:var(--ink);color:#fff;border:none;padding:16px 18px">
-  <div class="lbl" style="color:var(--gold)">Objetivo en común</div>
-  <div class="row" style="margin-top:6px"><b class="pts" style="font-size:28px">$ 24.800</b><span style="opacity:.7;font-size:13px;margin:8px 0 0 6px">de $ 40.000</span></div>
-  <div class="bar" style="margin-top:10px;background:rgba(255,255,255,.15)"><i style="width:62%;background:var(--gold)"></i></div>
-  <div class="row" style="margin-top:8px;font-size:12px;opacity:.8"><span>62% · faltan 54 días</span><span class="sp"></span><span>Enero 2027</span></div>
+/* ---------- grupos ---------- */
+S.groups=()=>`<div class="body"><div class="row" style="margin:4px 0 14px"><span class="t1">Grupos</span><span class="sp"></span><span class="chip on" data-go="newgroup">${I('plus',14)}Crear</span></div>
+ ${ST.groups.map(grpRow).join('')||'<div class="empty">Todavía no estás en ningún grupo</div>'}
+ <div class="card" style="margin-top:14px;background:var(--blush);border-color:var(--blush2)">
+  <div class="row" style="gap:10px"><span class="ibox" style="background:var(--brand);color:#fff">${I('plus',20)}</span><div style="flex:1"><div class="t2">Crear un grupo</div><div class="small" style="font-size:12px">Con un objetivo en común o para competir</div></div></div>
+  <div class="btn" data-go="newgroup" style="margin-top:12px;height:44px">Nuevo grupo</div></div>
+ <div class="lbl" style="margin:18px 0 4px">Amigos</div>${ST.friends.map(friendRow).join('')}
+</div>`;
+S.newgroup=()=>{const f=ST.form,sel=f.mem||ST.friends.filter(x=>x.follow).map(x=>x.id);return`<div class="body" style="display:flex;flex-direction:column">${back('groups','Nuevo grupo')}
+ <div class="lbl" style="margin-bottom:6px">Nombre</div><div class="inp">${I('users',18)}<input id="g-name" placeholder="Ej: Viaje de egresados" value="${esc(f.gname||'')}"></div>
+ <div class="lbl" style="margin:14px 0 6px">Objetivo de ahorro (opcional)</div><div class="inp">$<input id="g-goal" inputmode="numeric" placeholder="Dejalo vacío para solo competir" value="${esc(f.ggoal||'')}"></div>
+ <div class="lbl" style="margin:14px 0 6px">Fecha límite</div><div class="inp">${I('cal',18)}<input id="g-date" type="date" value="${esc(f.gdate||kAdd(today(),60))}"></div>
+ <div class="lbl" style="margin:14px 0 2px">Invitá amigos</div>
+ ${ST.friends.map(x=>`<div class="row" data-act="gmem" data-id="${x.id}" style="gap:12px;padding:8px 0"><span class="av" style="background:${BOTS[x.id][2]}">${BOTS[x.id][1]}</span><div style="flex:1;font-weight:700;font-size:14.5px">${x.n}</div><span class="radio ${sel.includes(x.id)?'on':''}" style="border-radius:6px"></span></div>`).join('')}
+ <div class="btn" data-act="mkgroup" style="margin-top:16px">Crear grupo</div>
+</div>`};
+S.group=()=>{const g=grp(ST.gid);if(!g){ST.screen='groups';return S.groups()}const ms=members(g),tab=ST.gtab;return`<div class="body">
+ ${back('groups',esc(g.name),`<span class="chip" data-act="invite" data-id="${g.id}" style="height:32px">${I('link',15)}Invitar</span>`)}
+ ${g.goal?`<div class="card" style="background:var(--ink);color:#fff;border:none;padding:16px 18px">
+  <div class="row"><div class="lbl" style="color:var(--gold)">Objetivo en común</div><span class="sp"></span><span style="font-size:12px;font-weight:700;color:var(--gold)">${I('flame',13)} ${g.streak} días de racha</span></div>
+  <div class="row" style="margin-top:6px"><b class="pts" style="font-size:28px">${M(g.saved)}</b><span style="opacity:.7;font-size:13px;margin:8px 0 0 6px">de ${M(g.goal)}</span></div>
+  <div class="bar" style="margin-top:10px;background:rgba(255,255,255,.15)"><i style="width:${Math.min(100,g.saved/g.goal*100)}%;background:var(--gold)"></i></div>
+  <div class="row" style="margin-top:8px;font-size:12px;opacity:.85"><span>${Math.round(g.saved/g.goal*100)}%${g.deadline?` · faltan ${Math.max(0,Math.round((kDate(g.deadline)-kDate(today()))/DAY))} días`:''}</span><span class="sp"></span><span data-act="gsave" data-id="${g.id}" style="background:#fff;color:var(--ink);font-weight:700;padding:6px 12px;border-radius:12px;opacity:1">Aportar</span></div></div>`
+ :`<div class="card" style="background:var(--ink);color:#fff;border:none;padding:16px 18px"><div class="row"><div class="lbl" style="color:var(--gold)">Grupo para competir</div><span class="sp"></span><span style="font-size:12px;font-weight:700;color:var(--gold)">${I('flame',13)} ${g.streak} días de racha</span></div><div style="margin-top:8px;font-size:14px">Ganá el mes y llevate <b>+30 pe$itos</b> extra.</div></div>`}
+ <div class="row card" style="gap:10px;margin-top:10px;padding:11px 14px" data-act="gtab" data-v="rewards">${COIN(20)}<div style="flex:1;font-size:13.5px"><b>${N(g.pool)} en el pozo del grupo</b><div class="small" style="font-size:11.5px">Para canjes grupales</div></div>${I('chev',16)}</div>
+ <div class="seg" style="margin-top:12px">${[['rank','Ranking'],['rewards','Canjes'],['feed','Actividad']].map(([k,t])=>`<div class="${tab===k?'on':''}" data-act="gtab" data-v="${k}">${t}</div>`).join('')}</div>
+ ${tab==='rank'?`<div style="margin-top:8px" data-hl="group">${ms.map((m,i)=>`<div class="row" style="gap:12px;padding:9px 12px;border-radius:14px;${m.me?'background:var(--blush);':''}"><b class="pts" style="width:18px;font-size:17px;color:${i===0?'var(--gold-d)':'var(--ink2)'}">${i+1}</b><span class="av" style="background:${m.c};width:34px;height:34px;font-size:13px">${esc(m.ini)}</span><div style="flex:1;font-weight:700;font-size:14.5px">${esc(m.n)}${m.me?' <span class="small" style="font-weight:500">(vos)</span>':''}</div><b class="pts" style="font-size:16px">${N(m.pts)}</b>${COIN(14)}</div>`).join('')}</div>
+  <div class="card row" style="gap:10px;margin-top:10px;padding:11px 14px">${I('trophy',19,'color:var(--gold-d)')}<div class="small" style="font-size:12.5px;color:var(--ink)">Ranking de ${monthName()} · el 1º gana <b>+30 pe$itos</b> extra</div></div>`
+ :tab==='rewards'?`<div class="small" style="margin:12px 0 0;font-size:12.5px">Lo que suman entre todos va a un pozo común. Lo canjean juntos.</div>${GREWARDS.map(r=>gRewRow(r,g)).join('')}`
+ :`<div style="margin-top:8px">${g.feed.slice(0,20).map(x=>`<div class="li">${I('spark',17,'color:var(--brand)')}<div style="flex:1;font-size:13.5px">${esc(x.t)}</div><span class="small" style="font-size:11.5px">${ago(x.ts)}</span></div>`).join('')}</div>`}
+ <div class="lbl" style="margin:16px 0 0">Código del grupo</div>
+ <div class="row" style="gap:8px;margin-top:8px"><div class="inp" style="flex:1;height:42px;font-size:12.5px">${I('link',16)}<b style="color:var(--ink)">pesitos.app/g/${g.id}</b></div><span class="chip" data-act="invite" data-id="${g.id}" style="height:42px">${I('copy',15)}</span></div>
+ ${g.id!=='floripa'&&g.id!=='liceo'?`<div data-act="leave" data-id="${g.id}" style="text-align:center;margin-top:16px;font-weight:700;font-size:13px;color:var(--ink2)">Salir del grupo</div>`:''}
+</div>`};
+
+/* ---------- perfil ---------- */
+function badges(){const s=streakInfo(),best=Math.max(ST.best||0,s.n);return[
+ ['flame','Racha de 7','var(--brand)',best>=7],['target','Presupuesto','var(--green)',budgetStreak()>=3],['clock','Anti-impulso','var(--gold-d)',ST.pauses.some(p=>p.status==='won')],
+ ['trophy','1º del grupo','#7C0A29',ST.groups.some(g=>myRank(g)===1)],['piggy','Ahorrista','#3B5B8E',savedMonth()>=saveGoal()&&saveGoal()>0],['gift','Primer canje','#C98A12',ST.redeems.length>0],['users','En equipo','#178A5E',ST.redeems.some(r=>r.group)],['bolt','Racha de 14','#B35A12',best>=14]]}
+const cfg=(ic,t,v,go)=>`<div class="li" ${go}>${I(ic,19,'color:var(--brand)')}<span style="font-size:14px;flex:1">${t}</span><span class="small" style="font-size:12.5px">${v}</span>${I('chev',15,'color:#bba')}</div>`;
+S.profile=()=>{const u=ST.user,s=streakInfo(),b=badges();return`<div class="body">
+ <div class="row" style="gap:14px;margin:6px 0 16px"><span class="av" style="width:62px;height:62px;font-size:22px;background:var(--brand)">${esc(initials(u.name))}</span><div><div class="t1" style="font-size:22px">${esc(u.name)}</div><div class="small">${u.age?u.age+' años · ':''}${esc((u.tags||[]).join(' y ')||'Pe$itos')}</div></div></div>
+ <div class="row" style="gap:8px">${[[N(totalPts()),'ganados en total'],[String(Math.max(ST.best||0,s.n)),'mejor racha'],[String(ST.redeems.length),'canjes']].map(([a,c])=>`<div class="card" style="flex:1;padding:10px;text-align:center"><div class="pts" style="font-size:21px">${a}</div><div class="small" style="font-size:11px">${c}</div></div>`).join('')}</div>
+ <div class="row" style="margin:16px 0 10px"><span class="lbl">Logros</span><span class="sp"></span><span class="small" style="font-weight:700">${b.filter(x=>x[3]).length} de ${b.length}</span></div>
+ <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px 4px">${b.map(([ic,t,c,on])=>`<div style="text-align:center;opacity:${on?1:.3}"><div style="width:50px;height:50px;margin:0 auto;border-radius:50%;background:${c};color:#fff;display:flex;align-items:center;justify-content:center">${I(ic,23)}</div><div style="font-size:11px;font-weight:700;margin-top:5px;line-height:1.2">${t}</div></div>`).join('')}</div>
+ <div class="card row" data-go="report" data-hl="report-card" style="gap:12px;margin-top:16px;background:var(--blush);border:none">${I('chart',22,'color:var(--brand)')}<div style="flex:1"><div style="font-weight:700;font-size:14px">Tu informe de ${monthName()}</div><div class="small" style="font-size:12px">${M(spentMonth())} gastados · ${monthExp().filter(e=>e.amt<=300).length} micro-gastos</div></div>${I('chev',16)}</div>
+ <div style="margin-top:8px">${cfg('target','Mis metas',`${u.savePct}% · ${M(u.budget)}`,'data-go="settings"')}${cfg('mail','Registro de gastos',u.logMode==='mail'?'Mail del banco ✓':'Manual','data-go="settings"')}${cfg('bell','Informes',u.reports,'data-go="settings"')}${cfg('users','Amigos y grupos',`${ST.friends.filter(f=>f.follow).length} · ${ST.groups.length} grupos`,'data-go="groups"')}${cfg('gift','Mis canjes',String(ST.redeems.length),'data-go="myredeems"')}</div>
+ <div class="lbl" style="margin:18px 0 6px">Herramientas de demo</div>
+ <div class="card" style="padding:4px 14px">
+  <div class="li" style="border:0" data-act="advance">${I('fwd',19,'color:var(--brand)')}<span style="font-size:14px;flex:1">Adelantar 24 h</span><span class="small">simula el día siguiente</span></div>
+  <div class="li" data-act="askreset">${I('spark',19,'color:var(--brand)')}<span style="font-size:14px;flex:1">Reiniciar la demo</span></div>
+  <div class="li" data-act="logout">${I('logout',19,'color:var(--brand)')}<span style="font-size:14px;flex:1">Cerrar sesión y borrar datos</span></div>
  </div>
- <div class="row" style="margin:16px 0 6px"><span class="t2">Ranking del mes</span><span class="sp"></span><span class="small">noviembre</span></div>
- ${rk(1,'#7C0A29','MP','Mati',340)}${rk(2,'#B3123E','SR','Sofi',200+ST.extra,true)}${rk(3,'#C98A12','CS','Caro',180)}${rk(4,'#E2365F','JM','Juli',150)}${rk(5,'#6B5560','NB','Nico',90)}
- <div class="card row" style="gap:10px;margin-top:10px;padding:11px 14px">${I('trophy',19,'color:var(--gold-d)')}<div class="small" style="font-size:12.5px;color:var(--ink)">El 1º del mes gana <b>+30 pe$itos</b> extra</div></div>
-</div>`,{tab:'Inicio'});
+</div>`};
+S.settings=()=>{const u=ST.user;return`<div class="body" style="display:flex;flex-direction:column">${back('profile','Mis metas')}
+ <div class="card"><div class="lbl">Presupuesto del mes</div><div class="inp big" style="border:0;padding:0;height:46px">$<input id="c-bud" inputmode="numeric" value="${u.budget}"></div></div>
+ <div class="card" style="margin-top:10px"><div class="row"><div class="lbl">Ahorro objetivo</div><span class="sp"></span><span class="pts" id="c-pctv" style="font-size:22px;color:var(--brand)">${u.savePct}%</span></div><input type="range" id="c-pct" min="0" max="50" step="5" value="${u.savePct}" style="margin-top:14px"></div>
+ <div class="card" style="margin-top:10px"><div class="lbl">Ingresos del mes</div><div class="inp big" style="border:0;padding:0;height:44px">$<input id="c-inc" inputmode="numeric" placeholder="0" value="${u.income||''}"></div></div>
+ <div class="lbl" style="margin:16px 0 8px">Registro de gastos</div>
+ <div class="chips">${[['mail','Mail del banco'],['manual','Manual']].map(([v,t])=>`<span class="chip ${u.logMode===v?'on':''}" data-act="clog" data-v="${v}">${t}</span>`).join('')}</div>
+ <div class="lbl" style="margin:16px 0 8px">Informes</div>
+ <div class="chips">${['Semanal','Mensual','No, gracias'].map(r=>`<span class="chip ${u.reports===r?'on':''}" data-act="crep" data-v="${r}">${r}</span>`).join('')}</div>
+ <div class="btn" data-act="savecfg" style="margin-top:22px">Guardar cambios</div>
+</div>`};
+S.report=()=>{const u=ST.user,ex=monthExp(),sp=spentMonth(),by={};ex.forEach(e=>by[e.cat]=(by[e.cat]||0)+e.amt);const rows=Object.entries(by).sort((a,b)=>b[1]-a[1]),mx=rows[0]?rows[0][1]:1,micro=ex.filter(e=>e.amt<=300),d=new Date(now()).getDate();return`<div class="body">${back('profile','Informe de '+monthName())}
+ <div class="row" style="gap:8px" data-hl="report">${[[M(sp),'gastado'],[M(sp/d),'por día'],[Math.round(sp/u.budget*100)+'%','del presupuesto']].map(([a,b])=>`<div class="card" style="flex:1;padding:10px;text-align:center"><div class="pts" style="font-size:17px">${a}</div><div class="small" style="font-size:11px">${b}</div></div>`).join('')}</div>
+ <div class="lbl" style="margin:16px 0 8px">En qué se fue la plata</div>
+ <div class="card">${rows.map(([c,v])=>`<div style="margin:6px 0 10px"><div class="row" style="font-size:13px;gap:8px">${I(catIco(c),16,'color:var(--brand)')}<b>${c}</b><span class="sp"></span><span>${M(v)}</span><span class="small" style="width:36px;text-align:right">${Math.round(v/sp*100)}%</span></div><div class="bar" style="margin-top:6px;height:8px"><i style="width:${v/mx*100}%"></i></div></div>`).join('')||'<div class="empty">Sin gastos este mes</div>'}</div>
+ <div class="card row" style="gap:12px;margin-top:10px">${I('coffee',22,'color:var(--gold-d)')}<div style="flex:1"><div style="font-weight:700;font-size:14px">${micro.length} micro-gastos (≤ $ 300)</div><div class="small" style="font-size:12px">Suman ${M(micro.reduce((s,e)=>s+e.amt,0))} · los gastos chicos que nadie anota</div></div></div>
+ <div class="card row" style="gap:12px;margin-top:10px">${I('piggy',22,'color:var(--green)')}<div style="flex:1"><div style="font-weight:700;font-size:14px">Ahorraste ${M(savedMonth())}</div><div class="small" style="font-size:12px">Tu meta es ${M(saveGoal())} (${u.savePct}%)</div></div></div>
+ <div class="card row" style="gap:12px;margin-top:10px">${I('spark',22,'color:var(--brand)')}<div style="flex:1"><div style="font-weight:700;font-size:14px">+${N(monthPts())} pe$itos este mes</div><div class="small" style="font-size:12px">${ST.pauses.filter(p=>p.status==='won').length} compras impulsivas evitadas</div></div></div>
+</div>`};
+S.notifs=()=>`<div class="body">${back('home','Notificaciones')}${ST.notifs.map(n=>`<div class="li">${I('bell',18,`color:${n.read?'var(--ink2)':'var(--brand)'}`)}<div style="flex:1;font-size:13.5px;${n.read?'color:var(--ink2)':'font-weight:500'}">${esc(n.t)}</div><span class="small" style="font-size:11px">${ago(n.ts)}</span></div>`).join('')||'<div class="empty">Sin notificaciones</div>'}</div>`;
 
-const badge=(ic,t,c,off)=>`<div style="flex:1;text-align:center;opacity:${off?.35:1}"><div style="width:54px;height:54px;margin:0 auto;border-radius:50%;background:${c};color:#fff;display:flex;align-items:center;justify-content:center">${I(ic,25)}</div><div style="font-size:11px;font-weight:700;margin-top:6px;line-height:1.2">${t}</div></div>`;
-const cfg=(ic,t,v)=>`<div class="row" style="gap:12px;padding:11px 0;border-top:1px solid var(--line)">${I(ic,19,'color:var(--brand)')}<span style="font-size:14px;flex:1">${t}</span><span class="small" style="font-size:12.5px">${v}</span>${I('chev',15,'color:#bba')}</div>`;
-S.profile=()=>phone(`<div class="body">
- <div class="row" style="gap:14px;margin:6px 0 16px"><span class="av" style="width:62px;height:62px;font-size:22px;background:var(--brand)">SR</span><div><div class="t1" style="font-size:22px">Sofi Rodríguez</div><div class="small">21 años · Estudia y trabaja</div></div></div>
- <div class="row" style="gap:8px">
-  ${[[(1240+ST.extra).toLocaleString('es-UY'),'ganados en total'],['12','días de racha'],[String(8+ST.canjes),'canjes']].map(([a,b])=>`<div class="card" style="flex:1;padding:10px 10px;text-align:center"><div class="pts" style="font-size:21px">${a}</div><div class="small" style="font-size:11px">${b}</div></div>`).join('')}
- </div>
- <div class="lbl" style="margin:16px 0 10px">Logros</div>
- <div style="display:flex;gap:4px">${badge('flame','Racha de 7','var(--brand)')}${badge('target','Presupuesto','var(--green)')}${badge('clock','Anti-impulso','var(--gold-d)')}${badge('trophy','1º del grupo','#7C0A29',true)}</div>
- <div class="card row" style="gap:12px;margin-top:16px;background:var(--blush);border:none">${I('chart',22,'color:var(--brand)')}<div style="flex:1"><div style="font-weight:700;font-size:14px">Tu informe de octubre</div><div class="small" style="font-size:12px">Ahorraste 16% · 4 micro-gastos menos</div></div>${I('chev',16)}</div>
- <div style="margin-top:8px">${cfg('target','Mis metas','15% · $ 18.000')}${cfg('mail','Registro de gastos','Mail Itaú ✓')}${cfg('bell','Informes','Mensual')}${cfg('user','Amigos y grupos','14 · 3 grupos')}</div>
-</div>`,{tab:'Usuario'});
+/* ---------- sheets ---------- */
+SH.celebrate=s=>`<div style="text-align:center;position:relative">${STAR(10,-6,30,-12,'var(--gold)')}${STAR(270,4,36,14)}
+ <div style="width:76px;height:76px;margin:8px auto 0;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center">${I('flame',40,'color:var(--gold)')}</div>
+ <div class="t1" style="margin-top:14px;font-size:27px">${esc(s.title)}</div><div class="small" style="font-size:14px;margin-top:6px">${esc(s.sub)}</div>
+ <div class="row" style="justify-content:center;gap:8px;margin-top:14px"><b class="plus" style="font-size:34px">+${s.pts}</b>${COIN(26)}</div>
+ <div class="btn" data-act="closesheet" style="margin-top:18px">¡Vamos!</div></div>`;
+SH.confirm=s=>`<div class="t1" style="font-size:22px">${s.title}</div><div class="small" style="font-size:14px;margin-top:6px;line-height:1.4">${s.sub}</div>
+ <div class="btn" data-act="${s.act}" ${s.attrs||''} style="margin-top:18px">${s.ok}</div><div data-act="closesheet" style="text-align:center;margin-top:12px;font-weight:700;font-size:14px;color:var(--ink2)">Cancelar</div>`;
+SH.decide=s=>{const p=ST.pauses.find(x=>x.id===s.id);return`<div class="lbl" style="color:var(--brand)">Pasaron 24 h</div><div class="t1" style="font-size:24px;margin-top:6px">¿Todavía querés ${esc(p.item)}?</div><div class="small" style="font-size:14px;margin-top:6px">${M(p.amt)} · ${p.cat}. Si ya no la querés, te la ganaste igual: sumás pe$itos.</div>
+ <div class="btn" data-act="pwin" data-id="${p.id}" style="margin-top:18px;background:var(--green)">Ya no la quiero · ganá <span class="pts">+50</span>${COIN(18)}</div>
+ <div class="btn ghost" data-act="pbuy" data-id="${p.id}" style="margin-top:10px">La compro igual</div></div>`};
 
-
-function reset(){Object.assign(ST,{screen:'login',pts:200,week:50,waited:false,extra:0,canjes:0,cat:'Comida',last:{name:'Café + medialuna',place:'Café Amapola'},toast:''});render()}
-let tt;function toast(m){ST.toast=m;render();clearTimeout(tt);tt=setTimeout(()=>{ST.toast='';render(false)},2600)}
-function go(s){ST.screen=s;render()}
-function render(anim=true){const w=document.getElementById('wrap');w.innerHTML=S[ST.screen]();const p=w.firstElementChild;p.id='phone';if(!anim)p.style.animation='none';fit()}
-function fit(){const p=document.getElementById('phone');if(innerWidth<=600)return;if(p)p.style.zoom=Math.min(1,(innerHeight-32)/780,(innerWidth-16)/372)}
+/* ---------- render ---------- */
+let lastScreen='';
+function render(anim=true){
+ const ae=document.activeElement,aid=ae&&ae.tagName==='INPUT'?ae.id:'';
+ const w=document.getElementById('wrap');const prev=w.querySelector('.body');const keep=prev&&lastScreen===ST.screen?prev.scrollTop:0;
+ if(!S[ST.screen])ST.screen=ST.logged?'home':'login';
+ const tabOf={home:'home',detail:'home',streaks:'home',moves:'home',notifs:'home',save:'home',impulse:'home',rewards:'rewards',myredeems:'rewards',groups:'groups',group:'groups',newgroup:'groups',profile:'profile',settings:'profile',report:'profile'}[ST.screen];
+ w.innerHTML=`<div class="phone ${anim&&lastScreen!==ST.screen?'anim':''}" id="phone"><div class="scr"><div class="notch"></div>${sb()}${S[ST.screen]()}${tabOf&&ST.logged?tabs(tabOf):''}${ST.sheet?`<div class="shade" data-act="shade"><div class="sheet">${SH[ST.sheet.type](ST.sheet)}</div></div>`:''}${ST.toast?`<div class="toast">${esc(ST.toast)}</div>`:''}</div></div>`;
+ const b=w.querySelector('.body');if(b&&keep)b.scrollTop=keep;
+ if(aid&&lastScreen===ST.screen){const el=document.getElementById(aid);if(el){el.focus();try{const n=el.value.length;el.setSelectionRange(n,n)}catch(e){}}}
+ lastScreen=ST.screen;
+ if(ST.hl){const el=w.querySelector(`[data-hl="${ST.hl}"]`);if(el){el.classList.add('hl');if(lastScreen&&!keep)setTimeout(()=>el.scrollIntoView({block:'center',behavior:'smooth'}),60)}}
+ fit();side();save();
+}
+function fit(){const p=document.getElementById('phone');if(innerWidth<=600||!p)return;p.style.zoom=Math.min(1,(innerHeight-32)/780,(innerWidth-16)/372)}
 addEventListener('resize',fit);
-document.addEventListener('click',e=>{
- const a=e.target.closest('[data-act]'),g=e.target.closest('[data-go]');
- if(a){const t=a.dataset.act;
-  if(t==='wait'){if(!ST.waited){ST.waited=true;ST.pts+=50;ST.week+=50;ST.extra+=50}ST.screen='home';toast('Demo: pasaron 24 h y no la compraste. +50 pe$itos');}
-  else if(t==='buy'){ST.screen='home';toast('Compra registrada en Ropa · $ 2.400');}
-  else if(t==='cat'){ST.cat=a.dataset.cat;render(false)}
-  else if(t==='redeem'){const c=+a.dataset.cost;if(ST.pts<c)return;ST.pts-=c;ST.canjes++;ST.last={name:a.dataset.name,place:a.dataset.place};go('redeem')}
-  else if(t==='share'){ST.screen='group';toast('Compartiste tu canje en “Viaje a Floripa”');}
-  return}
- if(g){go(g.dataset.go);return}
- const ch=e.target.closest('.chip');if(ch&&!ch.closest('[data-act]')){const grp=ch.parentElement;if(['Semanal','Mensual','No, gracias'].includes(ch.textContent.trim()))grp.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));ch.classList.toggle('on');return}
- const tg=e.target.closest('.tog');if(tg){tg.classList.toggle('off');return}
- const op=e.target.closest('.card');if(op&&op.querySelector('.radio')){op.parentElement.querySelectorAll('.card').forEach(c=>{c.style.border='';c.style.background='';c.querySelector('.radio').classList.remove('on');const s=c.querySelector('span');s.style.background='var(--blush)';s.style.color='var(--brand)'});op.style.border='2px solid var(--brand)';op.style.background='#FFF9FA';op.querySelector('.radio').classList.add('on');const s=op.querySelector('span');s.style.background='var(--brand)';s.style.color='#fff'}
+let tt;function toast(m){ST.toast=m;clearTimeout(tt);tt=setTimeout(()=>{ST.toast='';render(false)},2800)}
+function go(s){ST.screen=s;if(!['add','save','impulse','newgroup','login','ob3'].includes(s))ST.form={};render()}
+const val=id=>{const e=document.getElementById(id);return e?e.value:''};
+const num=id=>+String(val(id)).replace(/[^\d]/g,'')||0;
+
+/* ---------- panel lateral (presentación) ---------- */
+const TOUR=[
+ ['demo','Entrar sin crear usuario','Arranca como Sofi, con un mes de datos'],
+ ['add','Registrar un gasto','Cumple los 14 días de racha y gana +100'],
+ ['streak','Ver las rachas','Calendario, desafío y premios'],
+ ['pause','¿Lo compro? → esperar 24 h','Pone una compra en pausa'],
+ ['pausewin','Adelantar 24 h y no comprar','Gana +50 por evitar el impulso'],
+ ['save','Ahorrar para el viaje del grupo','Suma al objetivo común'],
+ ['group','Ver el ranking del grupo','Quién suma más este mes'],
+ ['g-mer','Canje grupal: merienda para el grupo','Lo pagan con el pozo común'],
+ ['redeem','Canje individual con QR','Café + medialuna'],
+ ['report','Informe del mes','En qué se fue la plata']];
+function tourGo(k){
+ if(k!=='demo'&&!ST.logged){seedDemo()}
+ ST.hl=k;ST.sheet=null;ST.form={};
+ if(k==='demo'){if(ST.logged){ST.screen='home'}else{ST.screen='login'}}
+ if(k==='add'){ST.form={amt:'180',cat:'Café',note:'Café de la mañana'};ST.screen='add'}
+ if(k==='streak')ST.screen='streaks';
+ if(k==='pause'){ST.form={item:'Zapatillas nuevas',amt:'3200',cat2:'Ropa'};ST.screen='impulse'}
+ if(k==='pausewin'){ST.screen='impulse';if(!ST.pauses.some(p=>p.status==='wait'&&p.until<=now()))advanceDay()}
+ if(k==='save'){ST.form={amt:'1000',dest:ST.groups.find(g=>g.goal)?.id||'me'};ST.screen='save'}
+ if(k==='group'){ST.gid=(ST.groups[0]||{}).id;ST.gtab='rank';ST.screen='group'}
+ if(k==='g-mer'){ST.gid=(ST.groups[0]||{}).id;ST.gtab='rewards';ST.screen='group'}
+ if(k==='redeem'){ST.cat='Comida';ST.screen='rewards'}
+ if(k==='report')ST.screen='report';
+ if(['streak','group','report'].includes(k))ST.done[k]=1;
+ render();
+}
+function side(){const el=document.getElementById('side');if(!el||getComputedStyle(el).display==='none')return;
+ const h=location.hostname,local=!h||h==='localhost'||h==='127.0.0.1';
+ let qr='';if(!local&&typeof qrcode!=='undefined'){const q=qrcode(0,'M');q.addData(location.origin+location.pathname);q.make();qr=`<div class="qr">${q.createSvgTag({cellSize:4,margin:0,scalable:true})}<div style="font-size:14px;color:var(--ink2);line-height:1.45"><b style="color:var(--ink)">Probala en tu celular</b><br>Escaneá y tocá “Probar sin crearme usuario”.<br><span style="font-size:12px">${location.host}${location.pathname}</span></div></div>`}
+ const done=TOUR.filter(t=>ST.done[t[0]]).length;
+ el.innerHTML=`<div style="font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)">Demo en vivo · Grupo 4</div>
+ <div style="margin-top:8px">${LOGO(72)}</div>
+ <div class="h" style="font-weight:600;font-size:21px;margin-top:10px;line-height:1.2">Cada pesito suma.<br>Tus buenos hábitos tienen premio.</div>
+ ${ST.logged?`<div class="dclock">${I('cal',15,'color:var(--gold)')}${fmtDay(now())}${ST.offset?` · día +${ST.offset}`:''}</div>`:''}
+ <div class="row" style="margin-top:18px"><span class="lbl">Recorrido guiado</span><span class="sp"></span><span class="small" style="font-weight:700">${done}/${TOUR.length}</span></div>
+ <div class="tour">${TOUR.map(([k,t,s],i)=>`<div data-tour="${k}" class="${ST.done[k]?'ok':''} ${ST.hl===k?'cur':''}"><b>${ST.done[k]?'✓':i+1}</b><span><span style="font-weight:700;color:var(--ink)">${t}</span><br><span style="font-size:13px;color:var(--ink2)">${s}</span></span></div>`).join('')}</div>
+ <div class="row" style="gap:8px"><div class="b pri" data-side="advance" style="flex:1">${I('fwd',18)}Adelantar 24 h</div><div class="b" data-side="reset" style="flex:1">${I('spark',18)}Reiniciar demo</div></div>
+ ${qr}`;
+}
+document.getElementById('side').addEventListener('click',e=>{const t=e.target.closest('[data-tour]'),s=e.target.closest('[data-side]');
+ if(t)tourGo(t.dataset.tour);
+ if(s){if(s.dataset.side==='advance'){if(!ST.logged)seedDemo();advanceDay();render()}else{seedDemo();ST.done={demo:1};ST.screen='home';toast('Demo reiniciada: volviste al día 1 con Sofi');render()}}});
+
+/* ---------- eventos ---------- */
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.id==='f-q'){ST.form.q=t.value;const q=t.value.toLowerCase();document.getElementById('flist').innerHTML=ST.friends.filter(f=>f.n.toLowerCase().includes(q)).map(friendRow).join('')||'<div class="empty">No encontramos a nadie con ese nombre</div>'}
+ if(t.id==='i-amt'||t.id==='i-item'){ST.form[t.id==='i-amt'?'amt':'item']=t.value;const el=document.getElementById('insight');if(el)el.innerHTML=impulseInsight()}
+ if(t.id==='o-pct'){document.getElementById('o-pctv').textContent=t.value+'%';ST.ob.savePct=+t.value}
+ if(t.id==='o-bud')ST.ob.budget=+t.value.replace(/\D/g,'')||0; if(t.id==='o-inc')ST.ob.income=+t.value.replace(/\D/g,'')||0;
+ if(t.id==='c-pct')document.getElementById('c-pctv').textContent=t.value+'%';
+ if(t.id==='a-amt')ST.form.amt=t.value; if(t.id==='a-note')ST.form.note=t.value; if(t.id==='s-amt')ST.form.amt=t.value;
+ if(t.id==='g-name')ST.form.gname=t.value; if(t.id==='g-goal')ST.form.ggoal=t.value; if(t.id==='g-date')ST.form.gdate=t.value;
+ if(t.id==='f-name')ST.form.name=t.value; if(t.id==='f-mail')ST.form.mail=t.value;
 });
-reset();
-(function(){const el=document.getElementById('qr');const h=location.hostname;
- if(!h||h==='localhost'||h==='127.0.0.1'){el.innerHTML='<div style="font-size:14px;color:var(--ink2);line-height:1.45"><b style="color:var(--ink)">Para abrirla en el celular</b><br>Abrí <b>Abrir Pesitos.command</b> y escaneá el QR que aparece acá.</div>';return}
- if(typeof qrcode==='undefined')return;const q=qrcode(0,'M');q.addData(location.href);q.make();
- el.innerHTML=q.createSvgTag({cellSize:4,margin:0,scalable:true})+'<div style="font-size:14px;color:var(--ink2);line-height:1.45"><b style="color:var(--ink)">Escaneá con tu celular</b><br>y abrila como app: Compartir → <b>Agregar a inicio</b>.<br><span style="font-size:12px">'+location.host+'</span></div>'})();
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.tagName==='INPUT'){const b=document.querySelector('#phone .btn[data-act]:not([data-act="demo"])');if(b)b.click()}});
+function obCapture(){const o=ST.ob;if(document.getElementById('o-bud')){o.budget=num('o-bud')||18000;o.savePct=+val('o-pct');o.income=num('o-inc')}}
+document.getElementById('wrap').addEventListener('click',e=>{
+ const a=e.target.closest('[data-act]'),g=e.target.closest('[data-go]');
+ if(a){const t=a.dataset.act,d=a.dataset;
+  if(t==='shade'){if(e.target===a&&ST.sheet.type!=='decide'){ST.sheet=null;render(false)}return}
+  if(ST.hl&&!['closesheet'].includes(t))ST.hl='';
+  switch(t){
+  case 'demo':seedDemo();toast('Entraste como Sofi. ¡Probá todo!');render();return;
+  case 'signup':{const n=val('f-name').trim();if(!n){toast('Poné tu nombre para crear la cuenta');render(false);return}ST.ob={name:n,email:val('f-mail').trim(),budget:18000,savePct:15,income:0,tags:['Estudio'],logMode:'manual',reports:'Mensual',charts:true};go('ob1');return}
+  case 'obtag':{obCapture();const o=ST.ob;o.tags=o.tags||[];o.tags=o.tags.includes(d.t)?o.tags.filter(x=>x!==d.t):[...o.tags,d.t];render(false);return}
+  case 'ob1':obCapture();if(!ST.ob.budget){toast('Poné un presupuesto mayor a 0');render(false);return}go('ob2');return;
+  case 'oblog':ST.ob.logMode=d.v;render(false);return;
+  case 'obrep':ST.ob.reports=d.v;render(false);return;
+  case 'obchart':ST.ob.charts=ST.ob.charts===false;render(false);return;
+  case 'follow':{const f=ST.friends.find(x=>x.id===d.id);f.follow=!f.follow;if(ST.screen==='ob3'){const q=(ST.form.q||'').toLowerCase();document.getElementById('flist').innerHTML=ST.friends.filter(f=>f.n.toLowerCase().includes(q)).map(friendRow).join('');save()}else{toast(f.follow?`Ahora seguís a ${f.n}`:`Dejaste de seguir a ${f.n}`);render(false)}return}
+  case 'finish':{const o=ST.ob,fr=ST.friends;const keep=ST.friends;const st=blank();st.friends=keep;ST=st;ST.logged=true;
+   ST.user={name:o.name,email:o.email,age:null,tags:o.tags||[],budget:o.budget||18000,savePct:o.savePct??15,income:o.income||0,logMode:o.logMode||'manual',reports:o.reports||'Mensual',charts:o.charts!==false};
+   ST.since=today();ST.ch=newChallenge(0,today());
+   if(fr.find(x=>x.id==='mp').follow){const g={id:'floripa',name:'Viaje a Floripa',ini:'VF',color:'#7C0A29',goal:40000,saved:24800,deadline:'2027-01-10',pool:380,streak:9,members:[{id:'mp',pts:140},{id:'me'},{id:'cs',pts:90},{id:'jm',pts:60}],feed:[{ts:now(),t:`${firstName(o.name)} se sumó al grupo`},{ts:now()-DAY,t:'Mati aportó $ 1.000 al viaje'}]};ST.groups.push(g)}
+   earn(20,'Bienvenida a Pe$itos','Completaste tu perfil','spark');notify('¡Bienvenido/a! Registrá tu primer gasto para empezar tu racha.');
+   ST.screen='home';ST.sheet={type:'celebrate',title:`¡Bienvenido/a, ${firstName(o.name)}!`,sub:'Tus primeros pe$itos por completar el perfil.',pts:20};render();return}
+  case 'nospend':{if(ST.nospend.includes(today())){toast('Ya marcaste hoy como día sin gastos');render(false);return}if(ST.expenses.some(e=>dk(e.ts)===today())){toast('Hoy ya registraste gastos: tu racha está al día');render(false);return}ST.nospend.push(today());registerDay();checkStreak();checkChallenge();afterGain('Día sin gastos registrado. ¡+10 y tu racha sigue!');render(false);return}
+  case 'sync':{const n=rnd(1,2);let tot=0;for(let i=0;i<n;i++){const[m,c,v]=MAILFEED[rnd(0,MAILFEED.length-1)];const amt=v+rnd(-3,3)*10;addExpense(amt,c,m+' · aviso del banco');tot+=amt}ST.lastSync=now();afterGain(`Importamos ${n} ${n>1?'compras':'compra'} del mail (${M(tot)})`);render(false);return}
+  case 'acat':ST.form.amt=val('a-amt');ST.form.note=val('a-note');ST.form.cat=d.v;render(false);return;
+  case 'aday':ST.form.amt=val('a-amt');ST.form.note=val('a-note');ST.form.day=d.v;render(false);return;
+  case 'addexp':{const amt=num('a-amt');if(!amt){toast('Poné cuánto gastaste');render(false);return}const cat=ST.form.cat||'Café',off=+(ST.form.day||0);const wasCh=ST.ch&&chProgress().fail;const got=addExpense(amt,cat,val('a-note').trim(),off);ST.done.add=1;
+   const nowFail=ST.ch&&chProgress().fail&&!wasCh;ST.form={};ST.screen='home';
+   afterGain(nowFail?`Gasto registrado. Ojo: perdiste el desafío “${ST.ch.t}”.`:`Gasto de ${M(amt)} en ${cat} registrado${got?` · +${got} pe$itos`:''}`);render();return}
+  case 'delexp':ST.expenses=ST.expenses.filter(x=>x.id!==d.id);toast('Gasto borrado');render(false);return;
+  case 'squick':ST.form.amt=d.v;render(false);return;
+  case 'sdest':ST.form.amt=val('s-amt');ST.form.dest=d.v;render(false);return;
+  case 'dosave':{const amt=num('s-amt');if(!amt){toast('Poné cuánto ahorraste');render(false);return}const dest=ST.form.dest??(ST.groups.find(g=>g.goal)?.id||'me');const g=dest==='me'?null:grp(dest);
+   const goalBefore=savedMonth()>=saveGoal();ST.savings.unshift({id:uid(),ts:now(),amt,gid:g?g.id:null});const p=Math.max(5,Math.floor(amt/100));
+   earn(p,g?`Aportaste ${M(amt)}`:`Ahorraste ${M(amt)}`,g?g.name:'Mi ahorro','piggy');
+   if(g){g.saved=Math.min(g.goal,g.saved+amt);g.feed.unshift({ts:now(),t:`${meName()} aportó ${M(amt)} al objetivo`})}
+   if(!goalBefore&&savedMonth()>=saveGoal()&&saveGoal()>0&&!ST.closed['sg-'+monthName()]){ST.closed['sg-'+monthName()]=1;earn(50,`Ahorraste el ${ST.user.savePct}% del mes`,'Meta de ahorro cumplida','trophy');celebrateQ.push({title:'¡Meta de ahorro cumplida!',sub:`Llegaste a ${M(saveGoal())} este mes.`,pts:50})}
+   ST.done.save=1;ST.form={};if(g){ST.gid=g.id;ST.gtab='rank';ST.screen='group'}else ST.screen='home';
+   afterGain(g?`Aportaste ${M(amt)} a ${g.name} · +${p} pe$itos`:`Guardaste ${M(amt)} · +${p} pe$itos`);render();return}
+  case 'icat':ST.form.cat2=d.v;render(false);return;
+  case 'wait':{const item=val('i-item').trim(),amt=num('i-amt');if(!item||!amt){toast('Contanos qué querés comprar y cuánto sale');render(false);return}
+   ST.pauses.unshift({id:uid(),item,amt,cat:ST.form.cat2||'Ropa',ts:now(),until:now()+DAY,status:'wait'});notify(`Pusiste en pausa: ${item} (${M(amt)}). Te avisamos en 24 h.`);ST.done.pause=1;ST.form={};
+   toast('En pausa. Te avisamos en 24 h · en la demo usá “Adelantar 24 h”');render(false);return}
+  case 'buynow':{const item=val('i-item').trim(),amt=num('i-amt');if(!amt){toast('Poné cuánto sale');render(false);return}addExpense(amt,ST.form.cat2||'Ropa',item||'Compra');ST.form={};ST.screen='home';afterGain(`Compra registrada · ${M(amt)}`);render();return}
+  case 'decide':ST.sheet={type:'decide',id:d.id};render(false);return;
+  case 'pwin':{const p=ST.pauses.find(x=>x.id===d.id);p.status='won';earn(50,'Evitaste una compra impulsiva',`No compraste ${p.item}`,'clock');ST.groups.forEach(g=>g.feed.unshift({ts:now(),t:`${meName()} evitó una compra impulsiva`}));ST.done.pausewin=1;ST.sheet={type:'celebrate',title:'¡Le ganaste al impulso!',sub:`Te ahorraste ${M(p.amt)} en ${p.item}.`,pts:50};render(false);return}
+  case 'pbuy':{const p=ST.pauses.find(x=>x.id===d.id);p.status='bought';ST.sheet=null;addExpense(p.amt,['Ropa','Salidas','Delivery'].includes(p.cat)?p.cat:'Otro',p.item);afterGain(`Compra registrada · ${M(p.amt)}. ¡Al menos lo pensaste!`);render(false);return}
+  case 'rcat':ST.cat=d.v;render(false);return;
+  case 'rgsel':ST.gid=d.v;render(false);return;
+  case 'askredeem':{const r=REWARDS.find(x=>x.id===d.id);ST.sheet={type:'confirm',title:`¿Canjear ${r.t}?`,sub:`${r.s}. Se descuentan ${r.p} pe$itos y te quedan ${ST.pts-r.p}.`,ok:'Canjear',act:'redeem',attrs:`data-id="${r.id}"`};render(false);return}
+  case 'redeem':{const r=REWARDS.find(x=>x.id===d.id);if(ST.pts<r.p)return;earn(-r.p,`Canjeaste ${r.t}`,r.s,'gift');const rd={id:uid(),ts:now(),name:r.t,place:r.s.split(' · ')[0],cost:r.p,code:'PES-'+rnd(1000,9999),exp:now()+7*DAY,group:null};ST.redeems.unshift(rd);ST.rid=rd.id;ST.sheet=null;ST.done.redeem=1;go('redeem');return}
+  case 'askgredeem':{const r=GREWARDS.find(x=>x.id===d.id),g=grp(d.g);ST.sheet={type:'confirm',title:`¿Canjear ${r.t.toLowerCase()} ${g.members.length}?`,sub:`Lo paga el pozo de “${esc(g.name)}”: se descuentan ${r.p} y quedan ${g.pool-r.p}. Le avisamos a todo el grupo.`,ok:'Canjear para el grupo',act:'gredeem',attrs:`data-id="${r.id}" data-g="${g.id}"`};render(false);return}
+  case 'gredeem':{const r=GREWARDS.find(x=>x.id===d.id),g=grp(d.g);if(g.pool<r.p)return;g.pool-=r.p;const name=`${r.t} ${g.members.length}`;const rd={id:uid(),ts:now(),name,place:r.s.split(' · ')[0],cost:r.p,code:'GRP-'+rnd(1000,9999),exp:now()+14*DAY,group:g.id};ST.redeems.unshift(rd);ST.rid=rd.id;g.feed.unshift({ts:now(),t:`${meName()} canjeó ${name.toLowerCase()} con el pozo`});notify(`El grupo ${g.name} canjeó ${name.toLowerCase()}`);ST.sheet=null;ST.done['g-mer']=1;go('redeem');return}
+  case 'openredeem':ST.rid=d.id;go('redeem');return;
+  case 'share':{const r=ST.redeems.find(x=>x.id===d.id);ST.groups.forEach(g=>g.feed.unshift({ts:now(),t:`${meName()} canjeó ${r.name}`}));if(ST.groups[0]){ST.gid=ST.groups[0].id;ST.gtab='feed';ST.screen='group'}toast(ST.groups.length?`Lo compartiste en ${ST.groups.map(g=>g.name).join(' y ')}`:'Sumate a un grupo para compartir');render();return}
+  case 'opengroup':ST.gid=d.id;ST.gtab='rank';if(d.id===((ST.groups[0]||{}).id))ST.done.group=1;ST.sheet=null;go('group');return;
+  case 'gtab':ST.gtab=d.v;if(d.v==='rank')ST.done.group=1;render(false);return;
+  case 'gsave':ST.form={dest:d.id};go('save');return;
+  case 'invite':{const link=location.origin+location.pathname+'#g='+d.id;try{navigator.clipboard.writeText(link)}catch(err){}toast('Link de invitación copiado');render(false);return}
+  case 'leave':ST.sheet={type:'confirm',title:'¿Salir del grupo?',sub:'Dejás de sumar al pozo y al ranking de este grupo.',ok:'Salir',act:'doleave',attrs:`data-id="${d.id}"`};render(false);return;
+  case 'doleave':ST.groups=ST.groups.filter(x=>x.id!==d.id);ST.sheet=null;go('groups');return;
+  case 'gmem':{const f=ST.form;f.gname=val('g-name');f.ggoal=val('g-goal');f.gdate=val('g-date');f.mem=f.mem||ST.friends.filter(x=>x.follow).map(x=>x.id);f.mem=f.mem.includes(d.id)?f.mem.filter(x=>x!==d.id):[...f.mem,d.id];render(false);return}
+  case 'mkgroup':{const n=val('g-name').trim();if(!n){toast('Ponele un nombre al grupo');render(false);return}const mem=ST.form.mem||ST.friends.filter(x=>x.follow).map(x=>x.id);const g=mkGroup(n,num('g-goal'),val('g-date'),['me',...mem]);g.members.forEach(m=>{if(m.id!=='me')m.pts=rnd(0,40)});g.pool=g.members.reduce((s,m)=>s+(m.pts||0),0);ST.groups.push(g);ST.gid=g.id;ST.gtab='rank';ST.form={};
+   try{navigator.clipboard.writeText(location.origin+location.pathname+'#g='+g.id)}catch(err){}toast(`Creaste “${n}” · link de invitación copiado`);go('group');return}
+  case 'advance':advanceDay();render(false);return;
+  case 'askreset':ST.sheet={type:'confirm',title:'¿Reiniciar la demo?',sub:'Volvés a Sofi con los datos de ejemplo. Se borra lo que hiciste.',ok:'Reiniciar',act:'doreset'};render(false);return;
+  case 'doreset':seedDemo();toast('Demo reiniciada');render();return;
+  case 'logout':ST.sheet={type:'confirm',title:'¿Cerrar sesión?',sub:'Se borran tus datos de este dispositivo.',ok:'Cerrar sesión',act:'dologout'};render(false);return;
+  case 'dologout':ST=blank();render();return;
+  case 'clog':ST.user.logMode=d.v;render(false);return;
+  case 'crep':ST.user.reports=d.v;render(false);return;
+  case 'savecfg':{const u=ST.user;u.budget=num('c-bud')||u.budget;u.savePct=+val('c-pct');u.income=num('c-inc');toast('Metas actualizadas');go('profile');return}
+  case 'closesheet':ST.sheet=null;if(celebrateQ.length){afterGain('')}render(false);return;
+  }
+  return}
+ if(g){const s=g.dataset.go;if(s==='report')ST.done.report=1;if(s==='streaks')ST.done.streak=1;if(s==='notifs')setTimeout(()=>{ST.notifs.forEach(n=>n.read=true);save()},0);if(ST.screen==='ob1'&&s==='ob2')obCapture();ST.hl='';go(s);return}
+});
+
+/* ---------- arranque ---------- */
+ST=load()||blank();
+if(ST.logged&&ST.screen==='login')ST.screen='home';
+if(!ST.logged&&!['login','ob1','ob2','ob3'].includes(ST.screen))ST.screen='login';
+render();
+setInterval(()=>{const a=document.activeElement;if(a&&a.tagName==='INPUT')return;if(ST.logged&&['home','impulse'].includes(ST.screen)&&!ST.sheet)render(false)},30000);
 </script></body></html>
